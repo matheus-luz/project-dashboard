@@ -7,8 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create",
-    "start": "npm run build && node ./dist/server.js",
+    "build": "/bin/sh tsc_eval.sh",
+    "prestart": "npm run build && npm run db:reset",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "start": "npm run build && node ./build/server.js",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
     "lint": "eslint ./src --ext .ts"
   },
