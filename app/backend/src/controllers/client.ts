@@ -15,4 +15,12 @@ export default class LoginController {
 
     return res.status(status).json(data.clientId);
   };
+
+  // Listar clientes por cidade
+  public findCityToClient = async (req: Request, res: Response) => {
+    const { city } = req.body;
+    const { status, data } = await this.service.findCityToClient(city);
+
+    return res.status(status).json(data);
+  };
 }

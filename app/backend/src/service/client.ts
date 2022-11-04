@@ -11,4 +11,13 @@ export default class TeamService {
       },
     };
   };
+
+  public findCityToClient = async (city: string) => {
+    const data = await User.findOne({ where: { city } });
+
+    return {
+      status: 200,
+      data,
+    };
+  };
 }
