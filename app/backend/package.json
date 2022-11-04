@@ -8,8 +8,8 @@
   },
   "scripts": {
     "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create",
-    "start": "npm run build && node ./dist/index.js",
-    "dev": "nodemon --watch \"./src/**\" ./src/index.ts"
+    "start": "npm run build && node ./dist/server.js",
+    "dev": "nodemon --watch \"./src/**\" ./src/server.ts"
   },
   "keywords": [],
   "author": "",
