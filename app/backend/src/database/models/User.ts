@@ -3,8 +3,8 @@ import db from '.';
 
 class User extends Model {
   public id!: number;
-  public first_name!: string;
-  public last_name!: string;
+  public firstName!: string;
+  public lastName!: string;
   public email!: string;
   public gender!: string;
   public company!: string;
