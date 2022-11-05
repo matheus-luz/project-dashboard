@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const _1 = require(".");
+const Company_1 = require("./Company");
+const City_1 = require("./City");
+const Role_1 = require("./Role");
 class User extends sequelize_1.Model {
 }
 User.init({
@@ -27,23 +30,32 @@ User.init({
         type: sequelize_1.STRING,
         allowNull: false,
     },
-    company: {
-        type: sequelize_1.STRING,
+    company_id: {
+        type: sequelize_1.INTEGER,
         allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
     },
-    city: {
-        type: sequelize_1.STRING,
+    city_id: {
+        type: sequelize_1.INTEGER,
         allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
     },
-    title: {
-        type: sequelize_1.STRING,
-        allowNull: false,
+    title_id: {
+        type: sequelize_1.INTEGER,
+        allowNull: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
     },
 }, {
     underscored: true,
     sequelize: _1.default,
-    modelName: 'users',
+    tableName: 'users',
     timestamps: false,
 });
+User.belongsTo(Company_1.default, { foreignKey: 'company_id', as: 'idCompany' });
+User.belongsTo(City_1.default, { foreignKey: 'city_id', as: 'idCity' });
+User.belongsTo(Role_1.default, { foreignKey: 'title_id', as: 'idTitle' });
 exports.default = User;
 //# sourceMappingURL=User.js.map

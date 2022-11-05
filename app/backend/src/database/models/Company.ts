@@ -20,7 +20,7 @@ Company.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'companies',
+  tableName: 'companies',
   timestamps: false,
 });
 

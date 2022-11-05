@@ -20,7 +20,7 @@ Role.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'role',
+  tableName: 'role',
   timestamps: false,
 });
 

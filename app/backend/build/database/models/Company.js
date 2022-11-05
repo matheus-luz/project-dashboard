@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const _1 = require(".");
-class City extends sequelize_1.Model {
+class Company extends sequelize_1.Model {
 }
-City.init({
+Company.init({
     id: {
         type: sequelize_1.INTEGER,
         allowNull: false,
@@ -18,8 +18,8 @@ City.init({
 }, {
     underscored: true,
     sequelize: _1.default,
-    tableName: 'cities',
+    tableName: 'companies',
     timestamps: false,
 });
-exports.default = City;
-//# sourceMappingURL=City.js.map
+exports.default = Company;
+//# sourceMappingURL=Company.js.map

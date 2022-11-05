@@ -20,7 +20,7 @@ City.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'cities',
+  tableName: 'cities',
   timestamps: false,
 });
 

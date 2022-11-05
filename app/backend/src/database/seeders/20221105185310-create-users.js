@@ -27,7 +27,7 @@ module.exports = {
           "gender": "Male",
           "company_id": 3,
           "city_id": 3,
-          "title_id":3
+          "title_id": 3
         },
         {          
           "first_name": "James",
@@ -48,13 +48,13 @@ module.exports = {
           "title_id": 5
         },
         {          
-          "first_name": "Terry",
+          "first_name": "Matheus Rodrigues Terry",
           "last_name": "Ruiz",
           "email": "truiz5@unc.edu",
           "gender": "Male",
           "company_id": 6,
           "city_id": 6,
-          "title_id": ""
+          "title_id": 1
         },
         {          
           "first_name": "Diane",
@@ -132,7 +132,7 @@ module.exports = {
           "last_name": "Kim",
           "email": "jkim2s@163.com",
           "gender": "Female",
-          "company": "15",
+          "company_id": "15",
           "city_id": 1,
           "title_id": 14
         },

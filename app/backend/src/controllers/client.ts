@@ -8,6 +8,13 @@ export default class LoginController {
     this.service = new ClientService();
   }
 
+  // Clientes
+  public getAll = async (req: Request, res: Response) => {
+    const { status, data } = await this.service.getAll();
+
+    return res.status(status).json(data);
+  };
+
   // Total de clientes por cidade
   public totalCity = async (req: Request, res: Response) => {
     const { status, data } = await this.service.count();
@@ -20,7 +27,7 @@ export default class LoginController {
     const { id } = req.params;
     const { status, data } = await this.service.findId(id);
 
-    return res.status(status).json(data.clientId);
+    return res.status(status).json(data);
   };
 
   // Listar clientes por cidade

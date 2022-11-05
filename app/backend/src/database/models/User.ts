@@ -41,22 +41,32 @@ User.init({
   companyId: {
     type: INTEGER,
     allowNull: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
   cityId: {
     type: INTEGER,
     allowNull: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
   titleId: {
     type: INTEGER,
     allowNull: false,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
 
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'users',
+  tableName: 'users',
   timestamps: false,
 });
+
+Company.hasMany(User, { foreignKey: 'companyId', as: 'idCompany' });
+City.hasMany(User, { foreignKey: 'cityId', as: 'idCity' });
+Role.hasMany(User, { foreignKey: 'titleId', as: 'idTitle' });
 
 User.belongsTo(Company, { foreignKey: 'companyId', as: 'idCompany' });
 User.belongsTo(City, { foreignKey: 'cityId', as: 'idCity' });

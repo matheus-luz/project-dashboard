@@ -1,6 +1,12 @@
 import User from '../database/models/User';
 
-export default class TeamService {
+export default class ClientService {
+  public getAll = async () => {
+    const data = await User.findAll();
+
+    return { status: 200, data };
+  };
+
   public count = async () => {
     const data = await User.findAndCountAll();
 
@@ -8,13 +14,11 @@ export default class TeamService {
   };
 
   public findId = async (id: string) => {
-    const clientId = await User.findOne({ where: { id } });
+    const data = await User.findOne({ where: { id } });
 
     return {
       status: 200,
-      data: {
-        clientId,
-      },
+      data, 
     };
   };
 
@@ -32,9 +36,9 @@ export default class TeamService {
     const data = await User.update({
       email,
       gender, 
-      company, 
-      city, 
-      title,
+      company_id: company, 
+      city_id: city, 
+      title_id: title,
     }, { where: { id } });
 
     return {
