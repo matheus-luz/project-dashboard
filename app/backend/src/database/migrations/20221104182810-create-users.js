@@ -25,22 +25,34 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      company: {
+      company_id: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'companies',
+          key: 'id'
+        }
       },
-      city: {
+      city_id: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'cities',
+          key: 'id'
+        }
       },
-      title: {
+      title_id: {
         allowNull: false,
-        type: Sequelize.STRING
-      }
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'role',
+          key: 'id'
+        }
+      },
     });
   },
 
   down: async (queryInterface, _Sequelize) => {
-    return queryInterface.dropTable('employees');
+    return queryInterface.dropTable('users');
   },
 };

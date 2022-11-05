@@ -1,5 +1,8 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
+import Company from './Company';
+import City from './City';
+import Role from './Role';
 
 class User extends Model {
   public id!: number;
@@ -7,9 +10,9 @@ class User extends Model {
   public lastName!: string;
   public email!: string;
   public gender!: string;
-  public company!: string;
-  public city!: string;
-  public title!: string;
+  public companyId!: number;
+  public cityId!: number;
+  public titleId!: number;
 }
 
 User.init({
@@ -35,23 +38,28 @@ User.init({
     type: STRING,
     allowNull: false,
   },
-  company: {
-    type: STRING,
+  companyId: {
+    type: INTEGER,
     allowNull: false,
   },
-  city: {
-    type: STRING,
+  cityId: {
+    type: INTEGER,
     allowNull: false,
   },
-  title: {
-    type: STRING,
+  titleId: {
+    type: INTEGER,
     allowNull: false,
   },
+
 }, {
   underscored: true,
   sequelize: db,
   modelName: 'users',
   timestamps: false,
 });
+
+User.belongsTo(Company, { foreignKey: 'companyId', as: 'idCompany' });
+User.belongsTo(City, { foreignKey: 'cityId', as: 'idCity' });
+User.belongsTo(Role, { foreignKey: 'titleId', as: 'idTitle' });
 
 export default User;

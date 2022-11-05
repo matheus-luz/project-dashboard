@@ -1,12 +1,12 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class City extends Model {
+class Role extends Model {
   public id!: number;
   public name!: string;
 }
 
-City.init({
+Role.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -14,14 +14,14 @@ City.init({
     autoIncrement: true,
   },
   name: {
-    type: STRING,
     allowNull: false,
+    type: STRING,
   },
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'cities',
+  modelName: 'role',
   timestamps: false,
 });
 
-export default City;
+export default Role;

@@ -1,12 +1,12 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class City extends Model {
+class Company extends Model {
   public id!: number;
   public name!: string;
 }
 
-City.init({
+Company.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -20,8 +20,8 @@ City.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'cities',
+  modelName: 'companies',
   timestamps: false,
 });
 
-export default City;
+export default Company;

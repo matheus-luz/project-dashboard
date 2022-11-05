@@ -8,6 +8,13 @@ export default class LoginController {
     this.service = new ClientService();
   }
 
+  // Total de clientes por cidade
+  public totalCity = async (req: Request, res: Response) => {
+    const { status, data } = await this.service.count();
+
+    return res.status(status).json(data);
+  };
+
   // Consultar um único cliente por ID
   public findId = async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -24,6 +31,7 @@ export default class LoginController {
     return res.status(status).json(data);
   };
 
+  // Editar um cliente por ID
   public updateId = async (req: Request, res: Response) => {
     const { body } = req;
     const { id } = req.params;
