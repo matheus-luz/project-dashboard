@@ -23,4 +23,12 @@ export default class LoginController {
 
     return res.status(status).json(data);
   };
+
+  public updateId = async (req: Request, res: Response) => {
+    const { body } = req;
+    const { id } = req.params;
+    const { status, data } = await this.service.updateId(body, id);
+
+    return res.status(status).json(data);
+  };
 }

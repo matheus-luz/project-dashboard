@@ -9,4 +9,6 @@ const clientController = new ClientController();
 routerClient.get('/city', clientController.findCityToClient);
 routerClient.get('/:id', clientController.findId);
 
+routerClient.patch('/:id', clientController.updateId);
+
 export default routerClient;

@@ -20,4 +20,20 @@ export default class TeamService {
       data,
     };
   };
+
+  public updateId = async (body: any, id: string) => {
+    const { email, gender, company, city, title } = body;
+    const data = await User.update({
+      email,
+      gender, 
+      company, 
+      city, 
+      title,
+    }, { where: { id } });
+
+    return {
+      status: 200,
+      data,
+    };
+  };
 }
