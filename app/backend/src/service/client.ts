@@ -55,7 +55,7 @@ export default class ClientService {
         data: 'Invalid city',
       };
     }
-    const response = data.filter((r) => r.id === cityFindId.id);
+    const response = data.filter((r) => r.city_id === cityFindId.id);
 
     return {
       status: 200,

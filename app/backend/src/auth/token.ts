@@ -7,7 +7,7 @@ const jwtConfig = {
 };
 
 type IData = {
-  firstName: string,
+  name: string,
   email: string;
 };
 

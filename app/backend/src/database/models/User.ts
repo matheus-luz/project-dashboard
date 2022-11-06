@@ -13,6 +13,7 @@ class User extends Model {
   public companyId!: number;
   public cityId!: number;
   public titleId!: number;
+  city_id: number;
 }
 
 User.init({
@@ -38,19 +39,19 @@ User.init({
     type: STRING,
     allowNull: false,
   },
-  companyId: {
+  company_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  cityId: {
+  city_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  titleId: {
+  title_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',

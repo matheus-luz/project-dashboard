@@ -1,5 +1,6 @@
 import User from '../database/models/User';
 import Token from '../auth/token';
+import { IUser } from '../types/TLogin';
 
 export default class LoginService {
   private token;
@@ -7,12 +8,12 @@ export default class LoginService {
     this.token = new Token();
   }
 
-  public find = async (user: any) => {
-    const { firstName, email } = user;
+  public find = async (user: IUser) => {
+    const { name, email } = user as IUser;
 
     const emailUser = await User.findOne({ where: { email } });
 
-    if (!firstName || !emailUser) {
+    if (!name || !emailUser) {
       return {
         status: 401,
         data: {
@@ -21,7 +22,7 @@ export default class LoginService {
       };
     }
 
-    const token = this.token.generate({ firstName, email });
+    const token = this.token.generate({ name, email });
 
     return {
       status: 200,
