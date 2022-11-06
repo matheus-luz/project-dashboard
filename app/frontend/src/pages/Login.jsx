@@ -32,7 +32,7 @@ const Login = () => {
     setFailedTryLogin(false);
   }, [name, email]);
 
-  if (isLogged) return <Navigate to="/matches" />;
+  if (isLogged) return <Navigate to="/client" />;
 
   return (
     <>
