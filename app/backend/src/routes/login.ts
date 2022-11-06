@@ -2,12 +2,12 @@ import { Router } from 'express';
 import LoginValidate from '../middlewares/login';
 
 import LoginController from '../controllers/login';
-// import Authorization from '../middlewares/authorization';
+import Authorization from '../middlewares/authorization';
 
 const routerLogin = Router();
 
 const loginController = new LoginController();
-// const authorization = new Authorization();
+const authorization = new Authorization();
 const loginValidate = new LoginValidate();
 
 routerLogin.post(
@@ -17,7 +17,9 @@ routerLogin.post(
 );
 
 routerLogin.get(
-  '/user',
+  '/validate',
+  authorization.validate,
+  authorization.token,
   loginController.userSucess,
 );
 
