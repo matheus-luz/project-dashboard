@@ -2,7 +2,7 @@ import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 import Company from './Company';
 import City from './City';
-import Role from './Role';
+// import Role from './Role';
 
 class User extends Model {
   public id!: number;
@@ -64,12 +64,8 @@ User.init({
   timestamps: false,
 });
 
-Company.hasMany(User, { foreignKey: 'companyId', as: 'idCompany' });
-City.hasMany(User, { foreignKey: 'cityId', as: 'idCity' });
-Role.hasMany(User, { foreignKey: 'titleId', as: 'idTitle' });
-
-User.belongsTo(Company, { foreignKey: 'companyId', as: 'idCompany' });
-User.belongsTo(City, { foreignKey: 'cityId', as: 'idCity' });
-User.belongsTo(Role, { foreignKey: 'titleId', as: 'idTitle' });
+User.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
+User.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
+// User.belongsTo(Role, { foreignKey: 'titleId', as: 'idTitle' });
 
 export default User;

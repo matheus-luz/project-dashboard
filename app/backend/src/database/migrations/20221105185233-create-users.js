@@ -44,10 +44,10 @@ module.exports = {
       title_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'role',
-          key: 'id'
-        }
+        // references: {
+        //   model: 'role',
+        //   key: 'id'
+        // }
       },
     });
   },

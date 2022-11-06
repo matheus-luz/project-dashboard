@@ -16,16 +16,16 @@ module.exports = {
           "last_name": "Mendoza",
           "email": "mmendoza1@sina.com.cn",
           "gender": "Female",
-          "company_id": 2,
-          "city_id": 2,
-          "title_id": 2
+          "company_id": 4,
+          "city_id": 3,
+          "title_id": 3
         },
         {          
           "first_name": "Craig",
           "last_name": "Mccoy",
           "email": "cmccoy2@bluehost.com",
           "gender": "Male",
-          "company_id": 3,
+          "company_id": 4,
           "city_id": 3,
           "title_id": 3
         },
@@ -44,17 +44,17 @@ module.exports = {
           "email": "bcooper4@biglobe.ne.jp",
           "gender": "Male",
           "company_id": 5,
-          "city_id": 5,
-          "title_id": 5
+          "city_id": 6,
+          "title_id": 4
         },
         {          
           "first_name": "Matheus Rodrigues Terry",
           "last_name": "Ruiz",
           "email": "truiz5@unc.edu",
           "gender": "Male",
-          "company_id": 6,
-          "city_id": 6,
-          "title_id": 1
+          "company_id": 7,
+          "city_id": 8,
+          "title_id": 3
         },
         {          
           "first_name": "Diane",
