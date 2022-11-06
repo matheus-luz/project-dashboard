@@ -5,7 +5,6 @@ Projeto desenvolvido para o desafio técnico da empresa [Native IP](https://nati
 
 Criação de uma API REST NodeJS, para consumir informações de clientes e um dashboard para visualizar essas informações em React.js.
 
-<details>
 <summary><strong>Estrutura do projeto</strong></summary><br />
 
 O projeto é composto de 4 entidades importantes para sua estrutura:
@@ -37,7 +36,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
 <summary><strong>Iniciar o projeto</strong></summary><br />
 
   1. Clone o repositório
-	* `git clone git@github.com:matheus-luz/project-dashboard-native.git`.
+	`git clone git@github.com:matheus-luz/project-dashboard-native.git`.
 - Entre na pasta do repositório que você acabou de clonar:
 	* `cd project-dashboard-native`
 
@@ -75,14 +74,14 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
   - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printadas* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
   - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`, ou `compose:up:dev`, `compose:down:dev`;
 
+</details
 </details>
-</details>
 
+<br/>
 
-<details>
-<summary><strong>Tecnologias</strong></summary><br />
+# Tecnologias
 
-  **Ferramentas Utilizadas**
+**Ferramentas Utilizadas**
 - Docker
 - Eslint
 - React.js
