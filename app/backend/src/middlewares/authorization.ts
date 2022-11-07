@@ -5,10 +5,12 @@ import Users from '../database/models/User';
 const SECRET = process.env.JWT_SECRET || 'secret';
 
 export default class Authorization {
-  public validate = (req: Request, res: Response) => {
+  public validate = (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization as string;
   
     if (!token) return res.status(400).json({ message: 'Token not found' });
+    
+    next();
   };
   
   public token = async (req: Request, res: Response, next: NextFunction) => {

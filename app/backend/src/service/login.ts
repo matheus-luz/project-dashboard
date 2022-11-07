@@ -9,20 +9,20 @@ export default class LoginService {
   }
 
   public find = async (user: IUser) => {
-    const { name, email } = user as IUser;
+    const { firstName, email } = user as IUser;
 
     const emailUser = await User.findOne({ where: { email } });
 
-    if (!name || !emailUser) {
+    if (!emailUser) {
       return {
         status: 401,
         data: {
-          message: 'Incorrect name and email',
+          message: 'Incorrect firstName and email',
         },
       };
     }
 
-    const token = this.token.generate({ name, email });
+    const token = this.token.generate({ name: firstName, email });
 
     return {
       status: 200,
