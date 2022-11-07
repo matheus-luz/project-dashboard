@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, _Sequelize) => {
-    return queryInterface.bulkInsert('role',
+    return queryInterface.bulkInsert('office',
       [
         {
           "name": "Biostatistician III",
@@ -47,6 +47,6 @@ module.exports = {
     },
 
   down: async (queryInterface, _Sequelize) => {
-    return queryInterface.bulkDelete('role', null, {});
+    return queryInterface.bulkDelete('office', null, {});
   },
 };

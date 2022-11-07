@@ -2,7 +2,7 @@ import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 import Company from './Company';
 import City from './City';
-import Role from './Role';
+import Role from './Office';
 
 class User extends Model {
   public id!: number;
@@ -11,7 +11,7 @@ class User extends Model {
   public email!: string;
   public gender!: string;
   public companyId!: number;
-  public cityId!: number;
+  public city_id!: number;
   public titleId!: number;
 }
 
@@ -38,19 +38,19 @@ User.init({
     type: STRING,
     allowNull: false,
   },
-  companyId: {
+  company_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  cityId: {
+  city_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  titleId: {
+  title_id: {
     type: INTEGER,
     allowNull: false,
     onUpdate: 'CASCADE',
@@ -64,12 +64,8 @@ User.init({
   timestamps: false,
 });
 
-Company.hasMany(User, { foreignKey: 'companyId', as: 'idCompany' });
-City.hasMany(User, { foreignKey: 'cityId', as: 'idCity' });
-Role.hasMany(User, { foreignKey: 'titleId', as: 'idTitle' });
-
-User.belongsTo(Company, { foreignKey: 'companyId', as: 'idCompany' });
-User.belongsTo(City, { foreignKey: 'cityId', as: 'idCity' });
-User.belongsTo(Role, { foreignKey: 'titleId', as: 'idTitle' });
+User.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
+User.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
+User.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
 
 export default User;

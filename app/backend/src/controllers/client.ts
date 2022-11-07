@@ -8,16 +8,16 @@ export default class LoginController {
     this.service = new ClientService();
   }
 
-  // Clientes
-  public getAll = async (req: Request, res: Response) => {
-    const { status, data } = await this.service.getAll();
+  // Total de clientes por cidade
+  public count = async (req: Request, res: Response) => {
+    const { status, data } = await this.service.count();
 
     return res.status(status).json(data);
   };
 
-  // Total de clientes por cidade
-  public totalCity = async (req: Request, res: Response) => {
-    const { status, data } = await this.service.count();
+  // Clientes
+  public getAll = async (req: Request, res: Response) => {
+    const { status, data } = await this.service.getAll();
 
     return res.status(status).json(data);
   };

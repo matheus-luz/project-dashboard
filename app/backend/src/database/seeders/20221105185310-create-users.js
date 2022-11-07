@@ -16,8 +16,8 @@ module.exports = {
           "last_name": "Mendoza",
           "email": "mmendoza1@sina.com.cn",
           "gender": "Female",
-          "company_id": 2,
-          "city_id": 2,
+          "company_id": 4,
+          "city_id": 3,
           "title_id": 2
         },
         {          
@@ -25,7 +25,7 @@ module.exports = {
           "last_name": "Mccoy",
           "email": "cmccoy2@bluehost.com",
           "gender": "Male",
-          "company_id": 3,
+          "company_id": 4,
           "city_id": 3,
           "title_id": 3
         },
@@ -44,7 +44,7 @@ module.exports = {
           "email": "bcooper4@biglobe.ne.jp",
           "gender": "Male",
           "company_id": 5,
-          "city_id": 5,
+          "city_id": 6,
           "title_id": 5
         },
         {          
@@ -52,9 +52,9 @@ module.exports = {
           "last_name": "Ruiz",
           "email": "truiz5@unc.edu",
           "gender": "Male",
-          "company_id": 6,
-          "city_id": 6,
-          "title_id": 1
+          "company_id": 7,
+          "city_id": 8,
+          "title_id": 6
         },
         {          
           "first_name": "Diane",
@@ -107,7 +107,7 @@ module.exports = {
           "gender": "Male",
           "company_id": 12,
           "city_id": 10,
-          "title_id": 12
+          "title_id": 1
         },
         {
           "first_name": "Betty",
@@ -116,7 +116,7 @@ module.exports = {
           "gender": "Female",
           "company_id": 13,
           "city_id": 11,
-          "title_id": 13
+          "title_id": 1
         },
         {
           "first_name": "Maria",
@@ -125,7 +125,7 @@ module.exports = {
           "gender": "Female",
           "company_id": "14",
           "city_id": 12,
-          "title_id": 14
+          "title_id": 1
         },
         {
           "first_name": "Jean",
@@ -134,7 +134,7 @@ module.exports = {
           "gender": "Female",
           "company_id": "15",
           "city_id": 1,
-          "title_id": 14
+          "title_id": 1
         },
       ],
       {},
