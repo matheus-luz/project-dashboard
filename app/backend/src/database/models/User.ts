@@ -1,8 +1,8 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 import Company from './Company';
-import City from './City';
 import Role from './Office';
+import City from './City';
 
 class User extends Model {
   public id!: number;

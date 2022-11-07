@@ -5,10 +5,11 @@ const User_1 = require("../database/models/User");
 const SECRET = process.env.JWT_SECRET || 'secret';
 class Authorization {
     constructor() {
-        this.validate = (req, res) => {
+        this.validate = (req, res, next) => {
             const token = req.headers.authorization;
             if (!token)
                 return res.status(400).json({ message: 'Token not found' });
+            next();
         };
         this.token = async (req, res, next) => {
             const token = req.headers.authorization;
