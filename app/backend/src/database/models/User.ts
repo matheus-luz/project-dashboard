@@ -2,7 +2,7 @@ import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 import Company from './Company';
 import City from './City';
-// import Role from './Role';
+import Role from './Office';
 
 class User extends Model {
   public id!: number;
@@ -11,9 +11,8 @@ class User extends Model {
   public email!: string;
   public gender!: string;
   public companyId!: number;
-  public cityId!: number;
+  public city_id!: number;
   public titleId!: number;
-  city_id: number;
 }
 
 User.init({
@@ -67,6 +66,6 @@ User.init({
 
 User.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
 User.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
-// User.belongsTo(Role, { foreignKey: 'titleId', as: 'idTitle' });
+User.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
 
 export default User;

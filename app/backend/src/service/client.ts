@@ -1,7 +1,8 @@
+import { IClientUpdate } from '../types/TClient';
 import Company from '../database/models/Company';
 import City from '../database/models/City';
 import User from '../database/models/User';
-// import Role from '../database/models/Role';
+import Office from '../database/models/Office';
 
 const connectionTable = {
   include:
@@ -14,11 +15,11 @@ const connectionTable = {
         model: City,
         as: 'city',
       },
-      // {
-      //   model: Role,
-      //   as: 'idRole',
-      //   attributes: { exclude: ['id'] },
-      // },
+      {
+        model: Office,
+        as: 'office',
+        attributes: { exclude: ['id'] },
+      },
       ],
 };
 
@@ -63,7 +64,7 @@ export default class ClientService {
     };
   };
 
-  public updateId = async (body: any, id: string) => {
+  public updateId = async (body: IClientUpdate, id: string) => {
     const { email, gender, company, city, title } = body;
     const data = await User.update({
       email,

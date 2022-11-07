@@ -1,12 +1,12 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class Role extends Model {
+class Office extends Model {
   public id!: number;
   public name!: string;
 }
 
-Role.init({
+Office.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -20,8 +20,8 @@ Role.init({
 }, {
   underscored: true,
   sequelize: db,
-  tableName: 'role',
+  tableName: 'office',
   timestamps: false,
 });
 
-export default Role;
+export default Office;

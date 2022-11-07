@@ -18,7 +18,7 @@ module.exports = {
           "gender": "Female",
           "company_id": 4,
           "city_id": 3,
-          "title_id": 3
+          "title_id": 2
         },
         {          
           "first_name": "Craig",
@@ -45,7 +45,7 @@ module.exports = {
           "gender": "Male",
           "company_id": 5,
           "city_id": 6,
-          "title_id": 4
+          "title_id": 5
         },
         {          
           "first_name": "Matheus Rodrigues Terry",
@@ -54,7 +54,7 @@ module.exports = {
           "gender": "Male",
           "company_id": 7,
           "city_id": 8,
-          "title_id": 3
+          "title_id": 6
         },
         {          
           "first_name": "Diane",
@@ -107,7 +107,7 @@ module.exports = {
           "gender": "Male",
           "company_id": 12,
           "city_id": 10,
-          "title_id": 12
+          "title_id": 1
         },
         {
           "first_name": "Betty",
@@ -116,7 +116,7 @@ module.exports = {
           "gender": "Female",
           "company_id": 13,
           "city_id": 11,
-          "title_id": 13
+          "title_id": 1
         },
         {
           "first_name": "Maria",
@@ -125,7 +125,7 @@ module.exports = {
           "gender": "Female",
           "company_id": "14",
           "city_id": 12,
-          "title_id": 14
+          "title_id": 1
         },
         {
           "first_name": "Jean",
@@ -134,7 +134,7 @@ module.exports = {
           "gender": "Female",
           "company_id": "15",
           "city_id": 1,
-          "title_id": 14
+          "title_id": 1
         },
       ],
       {},
