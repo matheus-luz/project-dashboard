@@ -24,8 +24,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
   - O front se comunica com serviço de back-end pela url `http://localhost:3001`.
 
 4️⃣ **Docker:**
-  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up` ou `npm run compose:up:dev`;
-  - Você **deve** configurar as `Dockerfiles` corretamente nas raízes do `front-end` e `back-end`, para conseguir inicializar a aplicação;
+  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up:dev`;
   
 <br/>
 
