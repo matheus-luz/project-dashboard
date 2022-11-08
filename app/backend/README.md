@@ -40,7 +40,7 @@ Essa API possui os endpoints abaixo:
 ## Usando a API
 Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as requisições, no entanto você pode utilizar a ferramenta que preferir.
 
-## I - Login (`/login`)
+## 1 - Login (`/login`)
 #### [POST `/login`]
 
 <details>
@@ -58,6 +58,228 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
     {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.     eyJuYW1lIjoiQ3JhaWciLCJlbWFpbCI6ImNtY2NveTJAYmx1ZWhvc3QuY29tIiwiaWF0IjoxNjY3ODc4NTc2LCJleHAiOjE2Njg0ODMzNzZ9.adSWyEjZ04QmFzvCBAX13S4qm55GAhjmthwhNlO9w6g"
     }
+
+</details>
+
+## 2 - GET (`/login/validate`)
+#### [GET `/login/validate`]
+
+Com Authorization já cadastrado
+
+<details>
+
+    {
+	    "name": "Craig",
+	    "email": "cmccoy2@bluehost.com"
+    }
+
++ Response 200 OK (application/json)
+
+    {
+      "id": 3
+    }
+
+</details>
+
+## 3 - GET (`/client`)
+#### [GET `/client`]
+
+<details>
+
+  + Response 200 OK (application/json)
+
+    [
+      {
+        "id": 1,
+        "first_name": "Laura",
+        "last_name": "Richards",
+        "email": "lrichards0@reverbnation.com",
+        "gender": "Female",
+        "company_id": 1,
+        "city_id": 1,
+        "title_id": 1,
+        "company": {
+          "name": "Meezzy"
+        },
+        "city": {
+          "name": "Warner, NH"
+        },
+        "office": {
+          "name": "Biostatistician III"
+        }
+      },
+      {
+        "id": 2,
+        "first_name": "Margaret",
+        "last_name": "Mendoza",
+        "email": "mmendoza1@sina.com.cn",
+        "gender": "Female",
+        "company_id": 4,
+        "city_id": 3,
+        "title_id": 2,
+        "company": {
+          "name": "Bubblemix"
+        },
+        "city": {
+          "name": "Lyon, WV"
+        },
+        "office": {
+          "name": "VP Marketing"
+        }
+      },
+      {
+        "id": 3,
+        "first_name": "Craig",
+        "last_name": "Mccoy",
+        "email": "cmccoy2@bluehost.com",
+        "gender": "Male",
+        "company_id": 4,
+        "city_id": 3,
+        "title_id": 3,
+        "company": {
+          "name": "Bubblemix"
+        },
+        "city": {
+          "name": "Lyon, WV"
+        },
+        "office": {
+          "name": "Senior Sales Associate"
+        }
+      },
+      {
+        "id": 4,
+        "first_name": "James",
+        "last_name": "Moore",
+        "email": "jmoore3@apache.org",
+        "gender": "Male",
+        "company_id": 4,
+        "city_id": 4,
+        "title_id": 4,
+        "company": {
+          "name": "Bubblemix"
+        },
+        "city": {
+          "name": "Willow Run, IL"
+        },
+        "office": {
+          "name": "Physical Therapy Assistant"
+        }
+      },
+      ...
+    ]
+
+</details>
+
+## 4 - GET (`/client/:id`)
+#### [GET `/client/:id`]
+
+
+<details>
+
++ Response 200 OK (application/json)
+
+    {
+      "id": 3,
+      "first_name": "Craig",
+      "last_name": "Mccoy",
+      "email": "cmccoy2@bluehost.com",
+      "gender": "Male",
+      "company_id": 4,
+      "city_id": 3,
+      "title_id": 3,
+      "company": {
+        "name": "Bubblemix"
+      },
+      "city": {
+        "name": "Lyon, WV"
+      },
+      "office": {
+        "name": "Senior Sales Associate"
+      }
+    }
+
+</details>
+
+## 5 - PATCH (`/client/:id`)
+#### [PATCH `/client/:id`]
+
+
+<details>
+
++ Request (application/json)
++ Body
+
+    {
+      "email": "poa@dmdm.com.cn",
+      "gender": "Masculino",
+      "companyId": 2,
+      "cityId": 2,
+      "titleId": 3
+    }
+
++ Response 200 OK (application/json)
+
+    "Updated"
+
+</details>
+
+## 6 - GET (`/client/city`)
+#### [GET `/client/city`]
+
+
+<details>
+  + Request (application/json)
+  + Body
+
+    {
+      "name": "East Natchitoches, PA"
+    }
+
+
++ Response 200 OK (application/json)
+
+    [
+      {
+        "id": 2,
+        "first_name": "Margaret",
+        "last_name": "Mendoza",
+        "email": "poa@dmdm.com.cn",
+        "gender": "Masculino",
+        "company_id": 2,
+        "city_id": 2,
+        "title_id": 3,
+        "company": {
+          "name": "Skipfire"
+        },
+        "city": {
+          "id": 2,
+          "name": "East Natchitoches, PA"
+        },
+        "office": {
+          "name": "Senior Sales Associate"
+        }
+      },
+      {
+        "id": 3,
+        "first_name": "Craig",
+        "last_name": "Mccoy",
+        "email": "poa@dmdm.com.cn",
+        "gender": "Masculino",
+        "company_id": 2,
+        "city_id": 2,
+        "title_id": 3,
+        "company": {
+          "name": "Skipfire"
+        },
+        "city": {
+          "id": 2,
+          "name": "East Natchitoches, PA"
+        },
+        "office": {
+          "name": "Senior Sales Associate"
+        }
+      }
+    ]
 
 </details>
 

@@ -74,7 +74,8 @@ module.exports = {
           "city_id": 7,
           "title_id": 8
         },
-        {          "first_name": "Jesse",
+        {          
+          "first_name": "Jesse",
           "last_name": "Mcdonald",
           "email": "jmcdonald7@etsy.com",
           "gender": "Male",

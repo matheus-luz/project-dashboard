@@ -1,7 +1,7 @@
-export type IClientUpdate = {
+export type TClientUpdate = {
   email: string, 
   gender: string, 
-  company: number, 
-  city: number, 
-  title: number
+  companyId: number, 
+  cityId: number, 
+  titleId: number
 };
