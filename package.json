@@ -1,0 +1,23 @@
+{
+  "name": "project-dashboard-native",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compose:up": "(cd app && docker-compose up -d --build)",
+    "compose:up:dev": "(cd app && docker-compose -f docker-compose.dev.yml up -d --build)",
+    "compose:down:dev": "(cd app && docker-compose -f docker-compose.dev.yml down --remove-orphans)",
+    "logs": "cd app && docker-compose logs -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheus-luz/project-dashboard-native.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheus-luz/project-dashboard-native/issues"
+  },
+  "homepage": "https://github.com/matheus-luz/project-dashboard-native#readme"
+}
