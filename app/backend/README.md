@@ -1,6 +1,18 @@
 # API Endpoints
 Essa API possui os endpoints abaixo:
 
+## DATABASE
+Depois de criar o db no docker ou inserir suas informações no .env
+
+Inicie o banco de dados
+  - npm run db:reset
+
+Rodando localmente:
+
+ - npm run dev
+
+<br/>
+
 <details>
 
 |  | Método | Descrição |
