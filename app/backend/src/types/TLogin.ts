@@ -1,4 +1,4 @@
 export type IUser = {
-  firstName: string;
+  name: string;
   email: string;
 };

@@ -7,9 +7,9 @@ export default class LoginValidate {
   };
 
   public validations = (req: Request, res: Response, next: NextFunction) => {
-    const { firstName, email } = req.body;
+    const { name, email } = req.body;
 
-    if (!firstName || !email) {
+    if (!name || !email) {
       return res.status(400).json({ message: 'All fields must be filled' });
     }
 

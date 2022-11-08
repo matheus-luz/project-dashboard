@@ -30,7 +30,7 @@ describe('Testa a rota /login', () => {
 
   it('Quando o cliente enviar um email inválido, retorne um status 400 e uma messagem de email inválido', async () => {
     const chaiHttpResponse = await chai.request(app)
-    .post('/login').send({ firstName: 'Craig ', email: 'invalid_email' });
+    .post('/login').send({ name: 'Craig ', email: 'invalid_email' });
 
     expect(chaiHttpResponse.status).to.be.eq(400);
     expect(chaiHttpResponse.body).to.be.eql({ message: 'email must be a valid email' });

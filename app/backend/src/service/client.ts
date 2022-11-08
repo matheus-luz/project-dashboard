@@ -49,7 +49,7 @@ export default class ClientService {
   };
 
   public findId = async (id: string) => {
-    const data = await User.findOne({ where: { id } });
+    const data = await User.findByPk(id, connectionTable);
 
     return {
       status: 200,
