@@ -1,42 +1,48 @@
 import * as chai from 'chai';
-import * as sinon from 'sinon';
-
-import UserModel from '../database/models';
-
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 
-import { Response } from 'superagent';
-
 chai.use(chaiHttp);
-
 
 const { expect } = chai;
 
-describe('Test Login', () => {
-  describe('/login methot POST - authenticate', () => {
-    before(async function() {
-      sinon.stub(UserModel, 'findOne').resolves(mockedUsers[0] as any);
-    });
+const login = {
+	"name": "Craig",
+	"email": "cmccoy2@bluehost.com"
+}
 
-    after(function() {
-      (UserModel.findOne as sinon.SinonStub).restore();
-    });
-  })
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQ3JhaWciLCJlbWFpbCI6ImNtY2NveTJAYmx1ZWhvc3QuY29tIiwiaWF0IjoxNjY3ODQwODc1LCJleHAiOjE2Njg0NDU2NzV9.sxokCWVDJxN0amBc2hoIbsgs7VjvKuST4zOHXQcGCtA"
+const invaliToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6IkFkbWluIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJwYXNzd29yZCI6IiQyYSQwOCR4aS5IeGsxY3pBTzBuWlIuLkIzOTN1MTBhRUQwUlExTjNQQUVYUTdIeHRMaktQRVpCdS5QVyJ9LCJpYXQiOjE2NTgzNTc1MjcsImV4cCI6MTY1ODk2MjMyN30.5PY03uLjRXWp364Fit4Wo_gYeC0UccQHXkjRoYug-00"
 
-  let chaiHttpResponse: Response;
-  it('login como administrador', async () => {
-    const { password, ...user } = mockedUsers[0];
 
-    chaiHttpResponse = await chai
-          .request(app)
-          .post('/login')
-          .send({ email: '', password: '' });
+describe('Testa a rota /login', () => {
 
-          expect(chaiHttpResponse.status).to.be.equal(200);
-          expect(chaiHttpResponse.body.user).to.be.deep.equal(user);
-          expect(chaiHttpResponse.body).to.have.property('token');
+  it('Quando o cliente não cadastrar as informações de login, retorne uma messagem de error e o status 400', async () => {
+    const chaiHttpResponse = await chai.request(app)
+    .post('/login').send();
+
+    expect(chaiHttpResponse.status).to.be.eq(400);
+    expect(chaiHttpResponse.body).to.be.eql({ message: 'All fields must be filled' });
+  });
+
+
+  it('Quando o cliente enviar um email inválido, retorne um status 400 e uma messagem de email inválido', async () => {
+    const chaiHttpResponse = await chai.request(app)
+    .post('/login').send({ name: 'Craig ', email: 'invalid_email' });
+
+    expect(chaiHttpResponse.status).to.be.eq(400);
+    expect(chaiHttpResponse.body).to.be.eql({ message: 'email must be a valid email' });
+  });
+});
+
+describe('Testa a rota /login/validate', () => {
+  it('Testa se o token é inválido, caso esteja incoreto, não retornara o id', async () => {
+    const chaiHttpResponse = await chai.request(app).get('/login/validate').set('authorization', invaliToken)
+    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.body).to.be.eql({
+      "message": "Token must be a valid token"
     })
+  });
 });

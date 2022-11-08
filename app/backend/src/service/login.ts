@@ -9,7 +9,7 @@ export default class LoginService {
   }
 
   public find = async (user: IUser) => {
-    const { firstName, email } = user as IUser;
+    const { name, email } = user as IUser;
 
     const emailUser = await User.findOne({ where: { email } });
 
@@ -17,12 +17,12 @@ export default class LoginService {
       return {
         status: 401,
         data: {
-          message: 'Incorrect firstName and email',
+          message: 'Incorrect name and email',
         },
       };
     }
 
-    const token = this.token.generate({ name: firstName, email });
+    const token = this.token.generate({ name, email });
 
     return {
       status: 200,

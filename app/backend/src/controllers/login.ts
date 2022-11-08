@@ -12,8 +12,8 @@ export default class LoginController {
   }
 
   public authentication = async (req: Request, res: Response) => {
-    const user = req.body;
-    const { status, data } = await this.service.find(user);
+    const client = req.body;
+    const { status, data } = await this.service.find(client);
 
     return res.status(status).json(data);
   };

@@ -7,8 +7,8 @@ class LoginValidate {
             return re.test(email);
         };
         this.validations = (req, res, next) => {
-            const { firstName, email } = req.body;
-            if (!firstName || !email) {
+            const { name, email } = req.body;
+            if (!name || !email) {
                 return res.status(400).json({ message: 'All fields must be filled' });
             }
             if (!this.findValidations(email)) {

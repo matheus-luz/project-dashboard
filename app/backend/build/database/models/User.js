@@ -4,7 +4,7 @@ const sequelize_1 = require("sequelize");
 const _1 = require(".");
 const Company_1 = require("./Company");
 const City_1 = require("./City");
-const Role_1 = require("./Role");
+const Office_1 = require("./Office");
 class User extends sequelize_1.Model {
 }
 User.init({
@@ -44,7 +44,7 @@ User.init({
     },
     title_id: {
         type: sequelize_1.INTEGER,
-        allowNull: true,
+        allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
     },
@@ -54,8 +54,8 @@ User.init({
     tableName: 'users',
     timestamps: false,
 });
-User.belongsTo(Company_1.default, { foreignKey: 'company_id', as: 'idCompany' });
-User.belongsTo(City_1.default, { foreignKey: 'city_id', as: 'idCity' });
-User.belongsTo(Role_1.default, { foreignKey: 'title_id', as: 'idTitle' });
+User.belongsTo(Company_1.default, { foreignKey: 'company_id', as: 'company' });
+User.belongsTo(City_1.default, { foreignKey: 'city_id', as: 'city' });
+User.belongsTo(Office_1.default, { foreignKey: 'title_id', as: 'office' });
 exports.default = User;
 //# sourceMappingURL=User.js.map

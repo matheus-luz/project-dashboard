@@ -7,15 +7,15 @@ class LoginService {
         this.find = async (user) => {
             const { firstName, email } = user;
             const emailUser = await User_1.default.findOne({ where: { email } });
-            if (!firstName || !emailUser) {
+            if (!emailUser) {
                 return {
                     status: 401,
                     data: {
-                        message: 'Incorrect name and email',
+                        message: 'Incorrect firstName and email',
                     },
                 };
             }
-            const token = this.token.generate({ firstName, email });
+            const token = this.token.generate({ name: firstName, email });
             return {
                 status: 200,
                 data: {

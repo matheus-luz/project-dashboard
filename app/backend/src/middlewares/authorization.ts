@@ -9,7 +9,6 @@ export default class Authorization {
     const token = req.headers.authorization as string;
   
     if (!token) return res.status(400).json({ message: 'Token not found' });
-    
     next();
   };
   

@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("../service/client");
 class LoginController {
     constructor() {
+        // Total de clientes por cidade
+        // public count = async (req: Request, res: Response) => {
+        //   const { status } = await this.service.count();
+        //   return res.status(status).json('sucess');
+        // };
         // Clientes
         this.getAll = async (req, res) => {
             const { status, data } = await this.service.getAll();
-            return res.status(status).json(data);
-        };
-        // Total de clientes por cidade
-        this.totalCity = async (req, res) => {
-            const { status, data } = await this.service.count();
             return res.status(status).json(data);
         };
         // Consultar um único cliente por ID
