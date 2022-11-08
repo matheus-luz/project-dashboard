@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken, requestData } from '../services/api';
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3000/')
+socket.on('connect', () => {
+  console.log('On');
+})
+
 
 const Login = () => {
   const [name, setName] = useState('');
