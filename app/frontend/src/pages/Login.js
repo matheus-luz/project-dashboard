@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken, requestData } from '../services/api';
 
 const Login = () => {
-  const [firstName, setFirstName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
@@ -12,11 +12,11 @@ const Login = () => {
     event.preventDefault()
 
     try {
-      const { token } = await requestLogin('/login', { firstName, email });
+      const { token } = await requestLogin('/login', { name, email });
 
       setToken(token);
 
-      const { id } = await requestData('/login/validate', { firstName, email });
+      const { id } = await requestData('/login/validate', { name, email });
 
       localStorage.setItem('token',  token);
       localStorage.setItem('id',  id);
@@ -42,9 +42,8 @@ const Login = () => {
           <label htmlFor="name-input">
             <input
               type="text"
-              value={ firstName }
-              onChange={ ({ target: { value } }) => setFirstName(value) }
-              data-testid="login__name_input"
+              value={ name }
+              onChange={ ({ target: { value } }) => setName(value) }
               placeholder="Nome"
             />
           </label>

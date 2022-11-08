@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { requestData } from '../services/api';
-import { useLocation } from 'react-router-dom';
+import { requestData, setToken } from '../services/api';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ClientDetails = () => {
   const [client, setClient] = useState([]);
   const location = useLocation();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const token = localStorage.getItem('token') || '';
+
+      if (!token) return navigate('/');
+
+      setToken(token);
+    })();
+  }, [navigate]);
+
 
 
   useEffect(() => {
@@ -27,10 +40,9 @@ const ClientDetails = () => {
             <h1>Nome: {client.first_name} { client.last_name }</h1>
             <p>{client.email}</p>
             <p>{client.gender}</p>
-            {console.log(client)}
-            {/* {/* <p>{client.company.name}</p> */}
-            {/* <p>{client.city.name}</p> */}
-            {/* <p>{client.office.name}</p> */}
+            <p>{client?.company?.name}</p>
+            <p>{client?.city?.name}</p>
+            <p>{client?.office?.name}</p>
           </div>
         )
         }

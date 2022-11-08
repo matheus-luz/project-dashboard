@@ -53,15 +53,9 @@ const Client = () => {
               to={ `${c.id}` }
             >
               <div>
-                <h3>
-                  {c.first_name}
-                </h3>
-                <p>{c.last_name}</p>
-                <p>{c.email}</p>
-                <p>{c.gender}</p>
-                <p>{c.company.name}</p>
-                <p>{c.city.name}</p>
-                <p>{c.name}</p>
+                <h4>
+                  {c.first_name} {c.last_name}
+                </h4>
               </div>
             </Link>
           );
