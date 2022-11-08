@@ -4,7 +4,7 @@ import Company from './Company';
 import Role from './Office';
 import City from './City';
 
-class User extends Model {
+class Client extends Model {
   public id!: number;
   public firstName!: string;
   public lastName!: string;
@@ -15,7 +15,7 @@ class User extends Model {
   public titleId!: number;
 }
 
-User.init({
+Client.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -60,12 +60,12 @@ User.init({
 }, {
   underscored: true,
   sequelize: db,
-  tableName: 'users',
+  tableName: 'customers',
   timestamps: false,
 });
 
-User.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
-User.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
-User.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
+Client.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
+Client.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
+Client.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
 
-export default User;
+export default Client;

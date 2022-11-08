@@ -1,7 +1,7 @@
 import { TClientUpdate } from '../types/TClient';
 import Company from '../database/models/Company';
 import City from '../database/models/City';
-import User from '../database/models/User';
+import Client from '../database/models/Client';
 import Office from '../database/models/Office';
 
 const connectionTable = {
@@ -24,7 +24,7 @@ const connectionTable = {
 };
 export default class ClientService {
   public count = async () => { 
-    const count = await User.count({
+    const count = await Client.count({
       distinct: true,
       col: 'city_id',
     });
@@ -33,13 +33,13 @@ export default class ClientService {
   };
   
   public getAll = async () => {
-    const data = await User.findAll(connectionTable);
+    const data = await Client.findAll(connectionTable);
 
     return { status: 200, data };
   };
 
   public findId = async (id: string) => {
-    const data = await User.findByPk(id, connectionTable);
+    const data = await Client.findByPk(id, connectionTable);
 
     return {
       status: 200,
@@ -49,7 +49,7 @@ export default class ClientService {
 
   public findCityToClient = async (name: string) => {
     const cityFindId = await City.findOne({ where: { name } });
-    const data = await User.findAll(connectionTable);
+    const data = await Client.findAll(connectionTable);
 
     if (!cityFindId) {
       return {
@@ -67,7 +67,7 @@ export default class ClientService {
 
   public updateId = async (body: TClientUpdate, id: string) => {
     const { email, gender, companyId, cityId, titleId } = body;
-    await User.update({
+    await Client.update({
       email,
       gender, 
       company_id: companyId, 

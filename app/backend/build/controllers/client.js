@@ -4,12 +4,12 @@ const client_1 = require("../service/client");
 class LoginController {
     constructor() {
         // Total de clientes por cidade
-        // public count = async (req: Request, res: Response) => {
-        //   const { status } = await this.service.count();
-        //   return res.status(status).json('sucess');
-        // };
+        this.count = async (_req, res) => {
+            const { status, data } = await this.service.count();
+            return res.status(status).json(data);
+        };
         // Clientes
-        this.getAll = async (req, res) => {
+        this.getAll = async (_req, res) => {
             const { status, data } = await this.service.getAll();
             return res.status(status).json(data);
         };
@@ -21,8 +21,8 @@ class LoginController {
         };
         // Listar clientes por cidade
         this.findCityToClient = async (req, res) => {
-            const { city } = req.body;
-            const { status, data } = await this.service.findCityToClient(city);
+            const { name } = req.body;
+            const { status, data } = await this.service.findCityToClient(name);
             return res.status(status).json(data);
         };
         // Editar um cliente por ID

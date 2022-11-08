@@ -1,4 +1,4 @@
-import User from '../database/models/User';
+import User from '../database/models/Client';
 import Token from '../auth/token';
 import { TUser } from '../types/TLogin';
 

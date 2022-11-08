@@ -1,21 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const User_1 = require("../database/models/User");
+const Client_1 = require("../database/models/Client");
 const token_1 = require("../auth/token");
 class LoginService {
     constructor() {
         this.find = async (user) => {
-            const { firstName, email } = user;
-            const emailUser = await User_1.default.findOne({ where: { email } });
+            const { name, email } = user;
+            const emailUser = await Client_1.default.findOne({ where: { email } });
             if (!emailUser) {
                 return {
                     status: 401,
                     data: {
-                        message: 'Incorrect firstName and email',
+                        message: 'Incorrect name and email',
                     },
                 };
             }
-            const token = this.token.generate({ name: firstName, email });
+            const token = this.token.generate({ name, email });
             return {
                 status: 200,
                 data: {
