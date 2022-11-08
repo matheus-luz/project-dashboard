@@ -1,6 +1,6 @@
 import User from '../database/models/User';
 import Token from '../auth/token';
-import { IUser } from '../types/TLogin';
+import { TUser } from '../types/TLogin';
 
 export default class LoginService {
   private token;
@@ -8,8 +8,8 @@ export default class LoginService {
     this.token = new Token();
   }
 
-  public find = async (user: IUser) => {
-    const { name, email } = user as IUser;
+  public find = async (user: TUser) => {
+    const { name, email } = user as TUser;
 
     const emailUser = await User.findOne({ where: { email } });
 
