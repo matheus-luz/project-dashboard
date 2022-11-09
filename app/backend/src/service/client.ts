@@ -1,7 +1,7 @@
-import { IClientUpdate } from '../types/TClient';
+import { TClientUpdate } from '../types/TClient';
 import Company from '../database/models/Company';
 import City from '../database/models/City';
-import User from '../database/models/User';
+import Client from '../database/models/Client';
 import Office from '../database/models/Office';
 
 const connectionTable = {
@@ -14,7 +14,6 @@ const connectionTable = {
       {
         model: City,
         as: 'city',
-        attributes: { exclude: ['id'] },
       },
       {
         model: Office,
@@ -24,32 +23,23 @@ const connectionTable = {
       ],
 };
 export default class ClientService {
-  // public count = async () => {
-  //   // const city = await City.findOne({ where: { name: city } });
-  //   // const client = await User.findAll(connectionTableCount);
-  //   const city = await City.findAll(connectionTableCount);
+  public count = async () => { 
+    const count = await Client.count({
+      distinct: true,
+      col: 'city_id',
+    });
 
-  //   // const data = client.map((c) => c.city_id === c.city.id);
-
-  //   // const r = data.map(())
-
-  //   // const filteredCity = city.map((c) => c.id);
-
-  //   // const { count } = await User
-  //   //   .findAndCountAll({ where: { filteredCity } });
-  //   // const response = client.map((r) => r.city_id === filteredCity);
-
-  //   return { status: 200, data: city };
-  // };
+    return { status: 200, data: count };
+  };
   
   public getAll = async () => {
-    const data = await User.findAll(connectionTable);
+    const data = await Client.findAll(connectionTable);
 
     return { status: 200, data };
   };
 
   public findId = async (id: string) => {
-    const data = await User.findByPk(id, connectionTable);
+    const data = await Client.findByPk(id, connectionTable);
 
     return {
       status: 200,
@@ -59,7 +49,7 @@ export default class ClientService {
 
   public findCityToClient = async (name: string) => {
     const cityFindId = await City.findOne({ where: { name } });
-    const data = await User.findAll(connectionTable);
+    const data = await Client.findAll(connectionTable);
 
     if (!cityFindId) {
       return {
@@ -75,19 +65,19 @@ export default class ClientService {
     };
   };
 
-  public updateId = async (body: IClientUpdate, id: string) => {
-    const { email, gender, company, city, title } = body;
-    const data = await User.update({
+  public updateId = async (body: TClientUpdate, id: string) => {
+    const { email, gender, companyId, cityId, titleId } = body;
+    await Client.update({
       email,
       gender, 
-      company_id: company, 
-      city_id: city, 
-      title_id: title,
+      company_id: companyId, 
+      city_id: cityId, 
+      title_id: titleId,
     }, { where: { id } });
 
     return {
       status: 200,
-      data,
+      data: 'Updated',
     };
   };
 }

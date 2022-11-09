@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import User from '../database/models/User';
+import User from '../database/models/Client';
 import LoginService from '../service/login';
 
 const SECRET = process.env.JWT_SECRET || 'secret';

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = require("jsonwebtoken");
-const User_1 = require("../database/models/User");
+const Client_1 = require("../database/models/Client");
 const SECRET = process.env.JWT_SECRET || 'secret';
 class Authorization {
     constructor() {
@@ -16,7 +16,7 @@ class Authorization {
             try {
                 const decode = jwt.verify(token, SECRET);
                 const { email } = decode;
-                const user = await User_1.default.findOne({ where: { email } });
+                const user = await Client_1.default.findOne({ where: { email } });
                 if (!user) {
                     return res.status(401).json({ message: 'Token must be a valid token' });
                 }

@@ -4,7 +4,7 @@ import Company from './Company';
 import Role from './Office';
 import City from './City';
 
-class User extends Model {
+class Client extends Model {
   public id!: number;
   public firstName!: string;
   public lastName!: string;
@@ -12,10 +12,10 @@ class User extends Model {
   public gender!: string;
   public companyId!: number;
   public city_id!: number;
-  public titleId!: number;
+  public titleId: number;
 }
 
-User.init({
+Client.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -52,7 +52,7 @@ User.init({
   },
   title_id: {
     type: INTEGER,
-    allowNull: false,
+    allowNull: true,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
@@ -60,12 +60,12 @@ User.init({
 }, {
   underscored: true,
   sequelize: db,
-  tableName: 'users',
+  tableName: 'customers',
   timestamps: false,
 });
 
-User.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
-User.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
-User.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
+Client.belongsTo(Company, { foreignKey: 'company_id', as: 'company' });
+Client.belongsTo(City, { foreignKey: 'city_id', as: 'city' });
+Client.belongsTo(Role, { foreignKey: 'title_id', as: 'office' });
 
-export default User;
+export default Client;

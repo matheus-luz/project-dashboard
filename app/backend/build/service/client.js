@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Company_1 = require("../database/models/Company");
 const City_1 = require("../database/models/City");
-const User_1 = require("../database/models/User");
+const Client_1 = require("../database/models/Client");
 const Office_1 = require("../database/models/Office");
 const connectionTable = {
     include: [{
@@ -23,25 +23,27 @@ const connectionTable = {
 };
 class ClientService {
     constructor() {
-        // public count = async () => 
-        // // const city = await City.findOne({ where: { name: city } });
-        // // await User.findAll();
-        //   ({ status: 200 })
-        // ;
+        this.count = async () => {
+            const count = await Client_1.default.count({
+                distinct: true,
+                col: 'city_id',
+            });
+            return { status: 200, data: count };
+        };
         this.getAll = async () => {
-            const data = await User_1.default.findAll(connectionTable);
+            const data = await Client_1.default.findAll(connectionTable);
             return { status: 200, data };
         };
         this.findId = async (id) => {
-            const data = await User_1.default.findOne({ where: { id } });
+            const data = await Client_1.default.findByPk(id, connectionTable);
             return {
                 status: 200,
                 data,
             };
         };
-        this.findCityToClient = async (city) => {
-            const cityFindId = await City_1.default.findOne({ where: { name: city } });
-            const data = await User_1.default.findAll(connectionTable);
+        this.findCityToClient = async (name) => {
+            const cityFindId = await City_1.default.findOne({ where: { name } });
+            const data = await Client_1.default.findAll(connectionTable);
             if (!cityFindId) {
                 return {
                     status: 404,
@@ -55,17 +57,17 @@ class ClientService {
             };
         };
         this.updateId = async (body, id) => {
-            const { email, gender, company, city, title } = body;
-            const data = await User_1.default.update({
+            const { email, gender, companyId, cityId, titleId } = body;
+            await Client_1.default.update({
                 email,
                 gender,
-                company_id: company,
-                city_id: city,
-                title_id: title,
+                company_id: companyId,
+                city_id: cityId,
+                title_id: titleId,
             }, { where: { id } });
             return {
                 status: 200,
-                data,
+                data: 'Updated',
             };
         };
     }

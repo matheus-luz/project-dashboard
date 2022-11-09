@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, _Sequelize) => {
-    return queryInterface.bulkInsert('users',
+    return queryInterface.bulkInsert('customers',
       [
         {          
           "first_name": "Laura",
@@ -16,8 +16,8 @@ module.exports = {
           "last_name": "Mendoza",
           "email": "mmendoza1@sina.com.cn",
           "gender": "Female",
-          "company_id": 4,
-          "city_id": 3,
+          "company_id": 2,
+          "city_id": 2,
           "title_id": 2
         },
         {          
@@ -25,7 +25,7 @@ module.exports = {
           "last_name": "Mccoy",
           "email": "cmccoy2@bluehost.com",
           "gender": "Male",
-          "company_id": 4,
+          "company_id": 3,
           "city_id": 3,
           "title_id": 3
         },
@@ -44,97 +44,98 @@ module.exports = {
           "email": "bcooper4@biglobe.ne.jp",
           "gender": "Male",
           "company_id": 5,
-          "city_id": 6,
+          "city_id": 5,
           "title_id": 5
         },
         {          
-          "first_name": "Matheus Rodrigues Terry",
+          "first_name": "Terry",
           "last_name": "Ruiz",
           "email": "truiz5@unc.edu",
           "gender": "Male",
-          "company_id": 7,
-          "city_id": 8,
-          "title_id": 6
-        },
-        {          
-          "first_name": "Diane",
-          "last_name": "Lawrence",
-          "email": "dlawrence8c@wordpress.org",
-          "gender": "Female",
-          "company_id": 7,
-          "city_id": 1,
-          "title_id": 7
+          "company_id": 6,
+          "city_id": 6,
+          // "title_id": ""
         },
         {          
           "first_name": "Julia",
           "last_name": "Kennedy",
           "email": "jkennedy6@behance.net",
           "gender": "Female",
-          "company_id": 8,
+          "company_id": 7,
           "city_id": 7,
-          "title_id": 8
+          "title_id": 7
         },
-        {          "first_name": "Jesse",
+        {          
+          "first_name": "Jesse",
           "last_name": "Mcdonald",
           "email": "jmcdonald7@etsy.com",
           "gender": "Male",
-          "company_id": 9,
+          "company_id": 8,
           "city_id": 8,
-          "title_id": 9
+          "title_id": 8
         },
         {          
           "first_name": "Harry",
           "last_name": "Edwards",
           "email": "hedwards8@mapquest.com",
           "gender": "Male",
-          "company_id": 10,
+          "company_id": 9,
           "city_id": 9,
-          "title_id": 10
-        },
-        {
-          "first_name": "Joe",
-          "last_name": "Franklin",
-          "email": "jfranklin4d@ted.com",
-          "gender": "Male",
-          "company_id": "11",
-          "city_id": 8,
-          "title_id": 11
+          "title_id": 9
         },
         {
           "first_name": "Peter",
           "last_name": "Ellis",
           "email": "pellis9@wordpress.com",
           "gender": "Male",
-          "company_id": 12,
+          "company_id": 11,
           "city_id": 10,
-          "title_id": 1
+          "title_id": 11
         },
         {
           "first_name": "Betty",
           "last_name": "Wright",
           "email": "bwrighta@xrea.com",
           "gender": "Female",
-          "company_id": 13,
+          "company_id": 12,
           "city_id": 11,
-          "title_id": 1
+          "title_id": 12
         },
         {
           "first_name": "Maria",
           "last_name": "Armstrong",
           "email": "marmstrongb@last.fm",
           "gender": "Female",
-          "company_id": "14",
+          "company_id": 13,
           "city_id": 12,
-          "title_id": 1
+          "title_id": 13 
         },
         {
-          "first_name": "Jean",
-          "last_name": "Kim",
-          "email": "jkim2s@163.com",
+          "first_name": "Lawrence",
+          "last_name": "West",
+          "email": "lwestc@1688.com",
+          "gender": "Male",
+          "company_id": 14,
+          "city_id": 13,
+          "title_id": 14
+        },
+        {
+          "first_name": "Katherine",
+          "last_name": "Porter",
+          "email": "kporterd@washingtonpost.com",
           "gender": "Female",
-          "company_id": "15",
-          "city_id": 1,
-          "title_id": 1
+          "company_id": 15,
+          "city_id": 14,
+          "title_id": 15
+        },
+        {
+          "first_name": "Philip",
+          "last_name": "Stewart",
+          "email": "pstewarte@intel.com",
+          "gender": "Male",
+          "company_id": 16,
+          "city_id": 15,
+          // "title_id": ""
         },
       ],
       {},
@@ -142,6 +143,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    return queryInterface.bulkDelete('users', null, {});
+    return queryInterface.bulkDelete('customers', null, {});
   },
 };
