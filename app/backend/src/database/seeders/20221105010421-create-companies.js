@@ -36,9 +36,6 @@ module.exports = {
           "name": "Twitterbridge",
         },
         {
-          "name": "Spring City, MS",
-        },
-        {
           "name": "Photolist"
         },
         {
@@ -49,6 +46,15 @@ module.exports = {
         },
         {
           "name": "Skajo"
+        },
+        {
+          "name": "Gabcube"
+        },
+        {
+          "name": "Twiyo"
+        },
+        {
+          "name": "Jaxbean"
         }
       ],
       {},

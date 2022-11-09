@@ -12,7 +12,7 @@ class Client extends Model {
   public gender!: string;
   public companyId!: number;
   public city_id!: number;
-  public titleId!: number;
+  public titleId: number;
 }
 
 Client.init({
@@ -52,7 +52,7 @@ Client.init({
   },
   title_id: {
     type: INTEGER,
-    allowNull: false,
+    allowNull: true,
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },

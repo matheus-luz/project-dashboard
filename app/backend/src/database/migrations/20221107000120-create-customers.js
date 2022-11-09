@@ -42,7 +42,7 @@ module.exports = {
         }
       },
       title_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'office',

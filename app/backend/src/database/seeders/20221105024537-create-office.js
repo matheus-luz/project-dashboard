@@ -41,6 +41,12 @@ module.exports = {
         {
           "name": "Health Coach IV",
         },
+        {
+          "name": "Electrical Engineer"
+        },
+        {
+          "name": "Staff Scientist"
+        }
       ],
       {},
       );
