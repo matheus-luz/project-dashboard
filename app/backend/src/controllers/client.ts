@@ -30,14 +30,6 @@ export default class LoginController {
     return res.status(status).json(data);
   };
 
-  // Listar clientes por cidade
-  public findCityToClient = async (req: Request, res: Response) => {
-    const { name } = req.body;
-    const { status, data } = await this.service.findCityToClient(name);
-
-    return res.status(status).json(data);
-  };
-
   // Editar um cliente por ID
   public updateId = async (req: Request, res: Response) => {
     const { body } = req;

@@ -9,7 +9,6 @@ const clientController = new ClientController();
 const clientMiddleware = new ClientMiddleware();
 
 routerClient.get('/', clientController.getAll);
-routerClient.get('/city', clientController.findCityToClient);
 routerClient.get('/count', clientController.count);
 
 routerClient.get('/:id', clientController.findId);
