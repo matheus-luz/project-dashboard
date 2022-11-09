@@ -1,3 +1,4 @@
+// import * as sequelize from 'sequelize';
 import { TClientUpdate } from '../types/TClient';
 import Company from '../database/models/Company';
 import City from '../database/models/City';
@@ -23,14 +24,10 @@ const connectionTable = {
       ],
 };
 export default class ClientService {
-  public count = async () => { 
-    const count = await Client.count({
-      distinct: true,
-      col: 'city_id',
-    });
-
-    return { status: 200, data: count };
-  };
+  public count = async () => 
+    // const count = await sequelize.query('SELECT * FROM cities');
+    ({ status: 200, data: 'implement' })
+  ;
   
   public getAll = async () => {
     const data = await Client.findAll(connectionTable);
