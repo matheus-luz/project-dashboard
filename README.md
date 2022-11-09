@@ -3,7 +3,7 @@
 Projeto desenvolvido para o desafio técnico da empresa [Native IP](https://nativeip.com.br/)
 
 
-Criação de uma API REST NodeJS, para consumir informações de clientes e um dashboard para visualizar essas informações em React.js.
+Criação de uma API REST em NodeJS, para consumir informações de clientes e um dashboard para visualizar essas informações em React.js.
 
 <summary><strong>Estrutura do projeto</strong></summary><br />
 
