@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import Users from '../database/models/Client';
+import User from '../database/models/User';
 
 const SECRET = process.env.JWT_SECRET || 'secret';
 
@@ -19,7 +19,7 @@ export default class Authorization {
       const decode = jwt.verify(token, SECRET) as jwt.JwtPayload;
       const { email } = decode;
 
-      const user = await Users.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email } });
 
       if (!user) {
         return res.status(401).json({ message: 'Token must be a valid token' });
