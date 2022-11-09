@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 import { requestData, setToken } from '../services/api';
 
-const City = () => {
-  const [city, setCity] = useState([]);
+const client = () => {
+  const [client, setClient] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
@@ -30,10 +30,10 @@ const City = () => {
     if (token !== '') {
       setToken(token);
     }
-    if (!city.length) {
+    if (!client.length) {
       requestData(endpoint)
         .then((response) => {
-          setCity(response);
+          setClient(response);
         })
         .catch((error) => console.log(error));
     }
@@ -43,10 +43,10 @@ const City = () => {
   if (!isAuthenticated) return <Loading />;
 
   const cardItem = () => {
-    if (city === null) return;
-    if (city) {
+    if (client === null) return;
+    if (client) {
       return (
-        city.map((c, index) => {
+        client.map((c, index) => {
           return (
             <Link
               key={ index }
@@ -75,4 +75,4 @@ const City = () => {
   );
 };
 
-export default City;
+export default client;
