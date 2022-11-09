@@ -16,10 +16,10 @@ const Login = () => {
 
       setToken(token);
 
-      const { last_name } = await requestData('/login/validate', { name, email });
+      const { id } = await requestData('/login/validate', { name, email });
 
       localStorage.setItem('token',  token);
-      localStorage.setItem('last_name',  last_name);
+      localStorage.setItem('id',  id);
 
       setIsLogged(true);
     } catch (error) {
@@ -44,7 +44,6 @@ const Login = () => {
               type="text"
               value={ name }
               onChange={ ({ target: { value } }) => setName(value) }
-              data-testid="login__name_input"
               placeholder="Nome"
             />
           </label>
