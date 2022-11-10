@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken, requestData } from '../services/api';
 
 const Login = () => {
-  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
@@ -12,11 +12,11 @@ const Login = () => {
     event.preventDefault()
 
     try {
-      const { token } = await requestLogin('/login', { name, email });
+      const { token } = await requestLogin('/login', { email, password });
 
       setToken(token);
 
-      const { id } = await requestData('/login/validate', { name, email });
+      const { id } = await requestData('/login/validate', { email, password });
 
       localStorage.setItem('token',  token);
       localStorage.setItem('id',  id);
@@ -30,7 +30,7 @@ const Login = () => {
 
   useEffect(() => {
     setFailedTryLogin(false);
-  }, [name, email]);
+  }, [password, email]);
 
   if (isLogged) return <Navigate to="/client" />;
 
@@ -39,20 +39,20 @@ const Login = () => {
       <section>
         <form>
           <h1>Área do usuário</h1>
-          <label htmlFor="name-input">
-            <input
-              type="text"
-              value={ name }
-              onChange={ ({ target: { value } }) => setName(value) }
-              placeholder="Nome"
-            />
-          </label>
           <label htmlFor="email-input">
             <input
               type="text"
               value={ email }
               onChange={ ({ target: { value } }) => setEmail(value) }
               placeholder="Email"
+            />
+          </label>
+          <label htmlFor="password-input">
+            <input
+              type="password"
+              value={ password }
+              onChange={ ({ target: { value } }) => setPassword(value) }
+              placeholder="Password"
             />
           </label>
           {

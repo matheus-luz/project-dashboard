@@ -61,14 +61,14 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
 + Body
 
     {
-	    "name": "Craig",
-	    "email": "cmccoy2@bluehost.com"
+	    "email": "luz.matheus11@gmail.com",
+	    "password": "12345"
     }
 
 + Response 201 Created (application/json)
 
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.     eyJuYW1lIjoiQ3JhaWciLCJlbWFpbCI6ImNtY2NveTJAYmx1ZWhvc3QuY29tIiwiaWF0IjoxNjY3ODc4NTc2LCJleHAiOjE2Njg0ODMzNzZ9.adSWyEjZ04QmFzvCBAX13S4qm55GAhjmthwhNlO9w6g"
+	    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1ei5tYXRoZXVzMTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NSIsImlhdCI6MTY2Nzk3Mzc5MiwiZXhwIjoxNjY4NTc4NTkyfQ.msMDR0J5sypS-Vx4e7655NxGGD17NpQgdlV_1INRv1E"
     }
 
 </details>
@@ -80,15 +80,15 @@ Com Authorization já cadastrado
 
 <details>
 
-    {
-	    "name": "Craig",
-	    "email": "cmccoy2@bluehost.com"
+     {
+	    "email": "luz.matheus11@gmail.com",
+	    "password": "12345"
     }
 
 + Response 200 OK (application/json)
 
     {
-      "id": 3
+      "id": 1
     }
 
 </details>

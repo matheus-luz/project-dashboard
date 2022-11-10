@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../components/Loading';
 import { requestData, setToken } from '../services/api';
 
-const Client = () => {
+const client = () => {
   const [client, setClient] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -75,4 +75,4 @@ const Client = () => {
   );
 };
 
-export default Client;
+export default client;
