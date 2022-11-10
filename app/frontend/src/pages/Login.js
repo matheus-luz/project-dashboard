@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken } from '../services/api';
 
+import '../styles/pages/login.css';
+
 const Login = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -32,12 +34,12 @@ const Login = () => {
   if (isLogged) return <Navigate to="/city" />;
 
   return (
-    <>
-      <section>
+      <div className="container">
         <form>
           <h1>Área do usuário</h1>
           <label htmlFor="email-input">
             <input
+              className='input__email'
               type="text"
               value={ email }
               onChange={ ({ target: { value } }) => setEmail(value) }
@@ -46,6 +48,7 @@ const Login = () => {
           </label>
           <label htmlFor="password-input">
             <input
+              className='input__password'
               type="password"
               value={ password }
               onChange={ ({ target: { value } }) => setPassword(value) }
@@ -55,24 +58,23 @@ const Login = () => {
           {
             (failedTryLogin)
               ? (
-                <p>
+                <p className='login__error'>
                   {
-                    `O endereço de e-mail não está correto.
-                    Por favor, tente novamente.`
+                    `O endereço de e-mail não está correto.`
                   }
                 </p>
               )
               : null
           }
           <button
+            className='btn'
             type="submit"
             onClick={ (event) => login(event) }
           >
             Entrar
           </button>
         </form>
-      </section>
-    </>
+      </div>
   );
 };
 

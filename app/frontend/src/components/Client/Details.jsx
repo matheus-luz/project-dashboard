@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { requestData } from '../../services/api';
 import { useLocation } from 'react-router-dom';
 
+import '../../styles/components/details.css';
+import Header from '../Header';
+
 const ClientDetails = () => {
   const [client, setClients] = useState([]);
   const location = useLocation();
@@ -21,15 +24,15 @@ const ClientDetails = () => {
 
   return (
     <div>
-      <h1>Detalhes do Cliente</h1>
-        {client && (
-          <div key={ client.id }>
-            <h3>Nome: {client.first_name} { client.last_name }</h3>
-            <p>{client.email}</p>
-            <p>{client.gender}</p>
-            <p>{client?.company?.name}</p>
-            <p>{client?.city?.name}</p>
-            <p>{client?.office?.name}</p>
+      <Header title="Detalhes do cliente" />
+      {client && (
+          <div className='details__client' key={ client.id }>
+            <h3>{client.first_name} { client.last_name }</h3>
+            <p>Email:  {client.email}</p>
+            <p>Gênero: {client.gender}</p>
+            <p>Empresa: {client?.company?.name}</p>
+            <p>Cidade: {client?.city?.name}</p>
+            <p>Cargo: {client?.office?.name}</p>
           </div>
           )
         }

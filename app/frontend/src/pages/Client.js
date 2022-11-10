@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import { requestData } from '../services/api';
+
+import '../styles/pages/client.css';
 
 const Client = () => {
   const [clients, setClients] = useState([]);
@@ -22,16 +25,18 @@ const Client = () => {
       return (
         clients.map((client, index) => {
           return (
-            <Link
+            <div className='container__client' key={index}>
+              <Link
               key={ index }
               to={ `/client/${client.id}` }
             >
-              <div>
-                <h4>
+              <ul>
+                <li>
                   {client.first_name} {client.last_name}
-                </h4>
-              </div>
+                </li>
+              </ul>
             </Link>
+            </div>
           );
         })
       );
@@ -41,7 +46,10 @@ const Client = () => {
   return (
     <>
       <section>
-        { cardItem() }
+        <section className='client'>
+          <Header title="Clientes da cidade" />
+          {cardItem()}
+        </section>
       </section>
     </>
   );

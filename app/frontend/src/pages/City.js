@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import { requestData } from '../services/api';
+
+import '../styles/pages/city.css';
 
 const City = () => {
   const [cities, setCities] = useState([]);
@@ -15,7 +18,6 @@ const City = () => {
         })
         .catch((error) => console.log(error));
     }
-    console.log(1);
   }, []);
 
   const cardItem = () => {
@@ -23,16 +25,20 @@ const City = () => {
       return (
         cities.map((city, index) => {
           return (
-            <Link
+            <div className='container__city' key={index}>
+              <Link
               key={ index }
               to={ `${city.id}` }
+              className="city__link"
             >
-              <div>
+              <div className="city__link">
                 <h4>
                   {city.name}
                 </h4>
+                <p>Total de clientes: 1</p>
               </div>
             </Link>
+            </div>
           );
         })
       );
@@ -42,6 +48,7 @@ const City = () => {
   return (
     <>
       <section>
+        <Header title="Lugares" />
         { cardItem() }
       </section>
     </>
