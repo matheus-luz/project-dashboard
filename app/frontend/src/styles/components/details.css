@@ -1,4 +1,8 @@
 .details__client {
   margin-top: 100px;
-  margin-left: 100px;
+  margin-left: 450px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 30%;
+  padding: 20px;
 }

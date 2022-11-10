@@ -1,8 +1,11 @@
 .header {
-  padding: 5px;
+  padding: 10px;
+  background-color: #134e4a;
 }
 
 .title__header {
-  margin-left: 20px;
-  margin-top: 50px;
+  color: white;
+  margin: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
