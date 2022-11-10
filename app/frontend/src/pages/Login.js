@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken } from '../services/api';
-import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3000/')
-socket.on('connect', () => {
-  console.log('On');
-})
-
+import '../styles/pages/login.css';
 
 const Login = () => {
   const [password, setPassword] = useState('');
