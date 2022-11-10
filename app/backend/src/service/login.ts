@@ -1,4 +1,4 @@
-import User from '../database/models/Client';
+import User from '../database/models/User';
 import Token from '../auth/token';
 import { TUser } from '../types/TLogin';
 
@@ -9,7 +9,7 @@ export default class LoginService {
   }
 
   public find = async (user: TUser) => {
-    const { name, email } = user as TUser;
+    const { email, password } = user as TUser;
 
     const emailUser = await User.findOne({ where: { email } });
 
@@ -17,12 +17,12 @@ export default class LoginService {
       return {
         status: 401,
         data: {
-          message: 'Incorrect name and email',
+          message: 'Incorrect email',
         },
       };
     }
 
-    const token = this.token.generate({ name, email });
+    const token = this.token.generate({ email, password });
 
     return {
       status: 200,

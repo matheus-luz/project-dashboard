@@ -1,15 +1,21 @@
 import { Request, Response } from 'express';
 
-import ClientService from '../service/client';
+import CityService from '../service/city';
 
-export default class ClientController {
+export default class CityController {
   private service;
   constructor() {
-    this.service = new ClientService();
+    this.service = new CityService();
   }
 
   public getAll = async (_req: Request, res: Response) => {
     const { status, data } = await this.service.getAll();
+
+    return res.status(status).json(data);
+  };
+
+  public count = async (_req: Request, res: Response) => {
+    const { status, data } = await this.service.count();
 
     return res.status(status).json(data);
   };
@@ -21,11 +27,10 @@ export default class ClientController {
     return res.status(status).json(data);
   };
 
-  public updateId = async (req: Request, res: Response) => {
-    const { body } = req;
+  public findCityToClient = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { status, data } = await this.service.updateId(body, id);
-
+    const { status, data } = await this.service.findCityToClient(id);
+  
     return res.status(status).json(data);
   };
 }

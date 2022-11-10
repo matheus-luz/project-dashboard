@@ -13,6 +13,7 @@ const loginValidate = new LoginValidate();
 routerLogin.post(
   '/',
   loginValidate.validations,
+  loginValidate.validationsBody,
   loginController.authentication,
 );
 

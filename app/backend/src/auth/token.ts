@@ -7,8 +7,8 @@ const jwtConfig = {
 };
 
 type IData = {
-  name: string,
   email: string;
+  password: string,
 };
 
 export default class Token {
