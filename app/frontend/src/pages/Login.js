@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { requestLogin, setToken, requestData } from '../services/api';
+import { requestLogin, setToken } from '../services/api';
 
 const Login = () => {
   const [password, setPassword] = useState('');
@@ -16,10 +16,7 @@ const Login = () => {
 
       setToken(token);
 
-      const { id } = await requestData('/login/validate', { email, password });
-
       localStorage.setItem('token',  token);
-      localStorage.setItem('id',  id);
 
       setIsLogged(true);
     } catch (error) {
@@ -32,7 +29,7 @@ const Login = () => {
     setFailedTryLogin(false);
   }, [password, email]);
 
-  if (isLogged) return <Navigate to="/client" />;
+  if (isLogged) return <Navigate to="/city" />;
 
   return (
     <>

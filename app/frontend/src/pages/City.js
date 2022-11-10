@@ -2,33 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { requestData } from '../services/api';
 
-const Client = () => {
-  const [clients, setClients] = useState([]);
+const City = () => {
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    const endpoint = `${location.pathname}`;
+    const endpoint = '/city';
 
-    if (!clients.length) {
+    if (!cities.length) {
       requestData(endpoint)
         .then((response) => {
-          setClients(response);
+          setCities(response);
         })
         .catch((error) => console.log(error));
     }
-  });
+    console.log(1);
+  }, []);
 
   const cardItem = () => {
-    if (clients) {
+    if (cities) {
       return (
-        clients.map((client, index) => {
+        cities.map((city, index) => {
           return (
             <Link
               key={ index }
-              to={ `/client/${client.id}` }
+              to={ `${city.id}` }
             >
               <div>
                 <h4>
-                  {client.first_name} {client.last_name}
+                  {city.name}
                 </h4>
               </div>
             </Link>
@@ -47,4 +48,4 @@ const Client = () => {
   );
 };
 
-export default Client;
+export default City;
