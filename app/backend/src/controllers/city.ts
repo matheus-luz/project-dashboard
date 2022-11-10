@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 
-import ClientService from '../service/client';
+import CityService from '../service/city';
 
-export default class ClientController {
+export default class CityController {
   private service;
   constructor() {
-    this.service = new ClientService();
+    this.service = new CityService();
   }
 
   // Clientes
@@ -15,7 +15,13 @@ export default class ClientController {
     return res.status(status).json(data);
   };
 
-  // Consultar um único cliente por ID
+  // Total de clientes por cidade
+  public count = async (_req: Request, res: Response) => {
+    const { status, data } = await this.service.count();
+
+    return res.status(status).json(data);
+  };
+
   public findId = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { status, data } = await this.service.findId(id);
@@ -23,12 +29,11 @@ export default class ClientController {
     return res.status(status).json(data);
   };
 
-  // Editar um cliente por ID
-  public updateId = async (req: Request, res: Response) => {
-    const { body } = req;
+    // Listar clientes por cidade
+  public findCityToClient = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { status, data } = await this.service.updateId(body, id);
-
+    const { status, data } = await this.service.findCityToClient(id);
+  
     return res.status(status).json(data);
   };
 }
