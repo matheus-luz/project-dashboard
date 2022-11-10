@@ -83,6 +83,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
 - Docker
 - Eslint
 - React.js
+- CSS
 - context API
 - Node.js
 - Express
