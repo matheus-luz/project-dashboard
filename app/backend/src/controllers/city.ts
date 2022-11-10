@@ -8,14 +8,12 @@ export default class CityController {
     this.service = new CityService();
   }
 
-  // Clientes
   public getAll = async (_req: Request, res: Response) => {
     const { status, data } = await this.service.getAll();
 
     return res.status(status).json(data);
   };
 
-  // Total de clientes por cidade
   public count = async (_req: Request, res: Response) => {
     const { status, data } = await this.service.count();
 
@@ -29,7 +27,6 @@ export default class CityController {
     return res.status(status).json(data);
   };
 
-    // Listar clientes por cidade
   public findCityToClient = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { status, data } = await this.service.findCityToClient(id);
