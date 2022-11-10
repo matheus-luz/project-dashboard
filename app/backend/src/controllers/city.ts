@@ -27,7 +27,6 @@ export default class CityController {
   public findCityToClient = async (req: Request, res: Response) => {
     const { name } = req.body;
     const { status, data } = await this.service.findCityToClient(name);
-
     return res.status(status).json(data);
   };
 }
