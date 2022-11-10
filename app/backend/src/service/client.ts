@@ -3,7 +3,6 @@ import Company from '../database/models/Company';
 import City from '../database/models/City';
 import Client from '../database/models/Client';
 import Office from '../database/models/Office';
-import * as sequelize from 'sequelize';
 
 const connectionTable = {
   include:
