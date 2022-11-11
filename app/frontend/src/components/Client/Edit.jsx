@@ -47,7 +47,7 @@ const ClientEdit = () => {
               type="text"
               value={ gender }
               onChange={ ({ target: { value } }) => setGender(value) }
-              placeholder="gender"
+              placeholder="Gender"
             />
           </label>
           <label htmlFor="companyId-input">
@@ -56,7 +56,7 @@ const ClientEdit = () => {
               type="number"
               value={ companyId }
               onChange={ ({ target: { value } }) => setCompanyId(value) }
-              placeholder="companyId"
+              placeholder="Company"
             />
           </label>
           <label htmlFor="cityId-input">
@@ -65,7 +65,7 @@ const ClientEdit = () => {
               type="number"
               value={ cityId }
               onChange={ ({ target: { value } }) => setCityId(value) }
-              placeholder="cityId"
+              placeholder="City"
             />
           </label>
           <label htmlFor="titleId-input">
@@ -74,7 +74,7 @@ const ClientEdit = () => {
               type="number"
               value={ titleId }
               onChange={ ({ target: { value } }) => setTitleId(value) }
-              placeholder="titleId"
+              placeholder="Title"
             />
           </label>
           <button 
