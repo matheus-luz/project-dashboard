@@ -271,4 +271,13 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
 
 </details>
 
+## 7 - GET (`/city/count`) - **EM ANDAMENTO**
+#### [GET `/city/count`]
+
+
+<details>
+
+
+</details>
+
 </details>
