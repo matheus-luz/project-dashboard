@@ -248,8 +248,8 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
 
 </details>
 
-## 6 - PATCH (`/client/:id`)
-#### [PATCH `/client/:id`]
+## 6 - PATCH (`/client/`)
+#### [PATCH `/client/`]
 
 
 <details>
@@ -258,7 +258,7 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
 + Body
 
     {
-      "email": "poa@dmdm.com.cn",
+      "email": "lrichards0@reverbnation.com",
       "gender": "Masculino",
       "companyId": 2,
       "cityId": 2,

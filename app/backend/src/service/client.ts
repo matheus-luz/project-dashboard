@@ -38,15 +38,19 @@ export default class ClientService {
     };
   };
 
-  public updateId = async (body: TClientUpdate, id: string) => {
+  public updateId = async (body: TClientUpdate) => {
     const { email, gender, companyId, cityId, titleId } = body;
+
+    const company = await Company.findOne({ where: { name: companyId } });
+    const city = await City.findOne({ where: { name: cityId } });
+    const title = await Office.findOne({ where: { name: titleId } });
+
     await Client.update({
-      email,
       gender, 
-      company_id: companyId, 
-      city_id: cityId, 
-      title_id: titleId,
-    }, { where: { id } });
+      company_id: company?.id, 
+      city_id: city?.id, 
+      title_id: title?.id,
+    }, { where: { email } });
 
     return {
       status: 200,

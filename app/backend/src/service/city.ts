@@ -3,6 +3,10 @@ import Client from '../database/models/Client';
 import Company from '../database/models/Company';
 import Office from '../database/models/Office';
 
+// import Count from '../utils/functions/count';
+
+// const count = new Count();
+
 const connectionTable = {
   include:
       [{
@@ -30,9 +34,11 @@ export default class CityService {
   };
 
   public count = async () => { 
-    const client = await Client.findAll(connectionTable);
+    const clients = await Client.findAll();
+    // const cities = await City.findAll();
+    // const data = count.countClients(clients, cities);
 
-    return { status: 200, data: client };
+    return { status: 200, data: clients };
   };
 
   public findId = async (id: string) => {
