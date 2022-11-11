@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { requestData } from '../../services/api';
-import { useLocation } from 'react-router-dom';
 
 import '../../styles/components/details.css';
 import Header from '../Header';
 
 const ClientDetails = () => {
   const [client, setClients] = useState([]);
-  const location = useLocation();
 
 
   useEffect(() => {
