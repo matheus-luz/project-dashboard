@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken } from '../services/api';
 
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:3001/login')
+socket.on('connect', () => console.log('[IO] Connect => A new connection has been established'))
+
 import '../styles/pages/login.css';
 
 const Login = () => {
@@ -10,8 +15,17 @@ const Login = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
 
+  const [messages, updateMessages] = useState([])
+
   const login = async (event) => {
     event.preventDefault()
+
+    if (email.trim()) {
+      socket.emit('login.message', {
+          email
+      })
+      setEmail('')
+    }
 
     try {
       const { token } = await requestLogin('/login', { email, password });
@@ -26,6 +40,13 @@ const Login = () => {
       setIsLogged(false);
     }
   };
+
+  useEffect(() => {
+    const handleNewMessage = newMessage =>
+            updateMessages([...messages, newMessage])
+        socket.on('login.message', handleNewMessage)
+        return () => socket.off('login.message', handleNewMessage)
+    }, [])
 
   useEffect(() => {
     setFailedTryLogin(false);
