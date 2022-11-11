@@ -3,10 +3,8 @@ import { Navigate } from 'react-router-dom';
 import { requestLogin, setToken } from '../services/api';
 
 import io from 'socket.io-client';
-import uuid from 'uuid';
 
-const myId = uuid()
-const socket = io('http://localhost:3000')
+const socket = io('http://localhost:3001/login')
 socket.on('connect', () => console.log('[IO] Connect => A new connection has been established'))
 
 import '../styles/pages/login.css';
@@ -17,20 +15,17 @@ const Login = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
 
-  const [message, updateMessage] = useState('')
   const [messages, updateMessages] = useState([])
 
   const login = async (event) => {
     event.preventDefault()
 
-    if (message.trim()) {
-      socket.emit('chat.message', {
-          id: myId,
-          message
+    if (email.trim()) {
+      socket.emit('login.message', {
+          email
       })
-      updateMessage('')
-      console.log(1);
-  }
+      setEmail('')
+    }
 
     try {
       const { token } = await requestLogin('/login', { email, password });
@@ -49,9 +44,8 @@ const Login = () => {
   useEffect(() => {
     const handleNewMessage = newMessage =>
             updateMessages([...messages, newMessage])
-        socket.on('chat.message', handleNewMessage)
-        return () => socket.off('chat.message', handleNewMessage)
-
+        socket.on('login.message', handleNewMessage)
+        return () => socket.off('login.message', handleNewMessage)
     }, [])
 
   useEffect(() => {
