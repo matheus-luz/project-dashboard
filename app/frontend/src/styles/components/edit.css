@@ -1,12 +1,6 @@
-h1 {
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 30px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .container__update {
   text-align: center;
+  margin-top: 20px;
 }
 
 label {

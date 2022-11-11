@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { requestUpdate } from '../../services/api';
 // import { requestData } from '../services/api';
 import '../../styles/components/edit.css';
+import Header from '../Header';
 
 const ClientEdit = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const ClientEdit = () => {
     event.preventDefault()
 
     try {
-      await requestUpdate('/client/update', {  
+      const data = await requestUpdate('/client/update', {  
         email, 
         gender,
         companyId,
@@ -23,14 +24,25 @@ const ClientEdit = () => {
         titleId  
       });
 
+      console.log(data);
+
+      if(data === 'Updated') {
+        setEmail('')
+        setGender('')
+        setCompanyId('')
+        setCityId('')
+        setTitleId('')
+      }
+
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className='container__update'>
-      <h1>Atualizar</h1>
+    <div>
+      <Header title="Atualizar o cliente" />
+      <div className='container__update'>
       <form>
           <label htmlFor="email-input">
             <input
@@ -38,7 +50,7 @@ const ClientEdit = () => {
               type="text"
               value={ email }
               onChange={ ({ target: { value } }) => setEmail(value) }
-              placeholder="Email"
+              placeholder="Digite o email do cliente"
             />
           </label>
           <label htmlFor="gender-input">
@@ -53,7 +65,7 @@ const ClientEdit = () => {
           <label htmlFor="companyId-input">
             <input
               className='input__update'
-              type="number"
+              type="text"
               value={ companyId }
               onChange={ ({ target: { value } }) => setCompanyId(value) }
               placeholder="Company"
@@ -62,7 +74,7 @@ const ClientEdit = () => {
           <label htmlFor="cityId-input">
             <input
               className='input__update'
-              type="number"
+              type="text"
               value={ cityId }
               onChange={ ({ target: { value } }) => setCityId(value) }
               placeholder="City"
@@ -71,7 +83,7 @@ const ClientEdit = () => {
           <label htmlFor="titleId-input">
             <input
               className='input__update'
-              type="number"
+              type="text"
               value={ titleId }
               onChange={ ({ target: { value } }) => setTitleId(value) }
               placeholder="Title"
@@ -84,7 +96,8 @@ const ClientEdit = () => {
           >
             Atualizar
           </button>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
