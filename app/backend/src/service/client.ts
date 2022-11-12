@@ -1,4 +1,3 @@
-// import * as sequelize from 'sequelize';
 import { TClientUpdate } from '../types/TClient';
 import Company from '../database/models/Company';
 import City from '../database/models/City';
@@ -45,15 +44,16 @@ export default class ClientService {
   };
 
   public updateId = async (body: TClientUpdate) => {
-    const { email, gender, companyId, titleId } = body;
+    const { email, gender, companyId, cityId, titleId } = body;
 
     const company = await Company.findOne({ where: { name: companyId } });
-    // const city = await City.findOne({ where: { name: cityId } });
+    const city = await City.findOne({ where: { name: cityId } });
     const title = await Office.findOne({ where: { name: titleId } });
 
     await Client.update({
       gender, 
       company_id: company?.id, 
+      city_id: city?.id,
       title_id: title?.id,
     }, { where: { email } });
 
