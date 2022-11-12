@@ -6,13 +6,8 @@ const routerCity = Router();
 
 const cityController = new CityController();
 
-routerCity.get(
-  '/',
-  cityController.getAll,
-);
-
-routerCity.get('/client', cityController.findCityToClient);
-
-routerCity.get('/client/:id', cityController.findId);
+routerCity.get('/', cityController.getAll);
+routerCity.get('/count', cityController.count);
+routerCity.get('/:id', cityController.findCityToClient);
 
 export default routerCity;

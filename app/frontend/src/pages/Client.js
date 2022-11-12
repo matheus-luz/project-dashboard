@@ -1,63 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Loading from '../components/Loading';
-import { requestData, setToken } from '../services/api';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import { requestData } from '../services/api';
 
-const client = () => {
-  const [client, setClient] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+import '../styles/pages/client.css';
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    (async () => {
-      const token = localStorage.getItem('token') || '';
-
-      if (!token) return navigate('/');
-
-      setToken(token);
-
-      requestData('/login/validate')
-        .then(() => setIsAuthenticated(true))
-        .catch(() => navigate('/'));
-    })();
-  }, [navigate]);
+const Client = () => {
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    const endpoint = '/client';
+    const endpoint = `${location.pathname}`;
 
-    const token = localStorage.getItem('token') || '';
-    if (token !== '') {
-      setToken(token);
-    }
-    if (!client.length) {
+    if (!clients.length) {
       requestData(endpoint)
         .then((response) => {
-          setClient(response);
+          setClients(response);
         })
         .catch((error) => console.log(error));
     }
   });
 
-
-  if (!isAuthenticated) return <Loading />;
-
   const cardItem = () => {
-    if (client === null) return;
-    if (client) {
+    if (clients) {
       return (
-        client.map((c, index) => {
+        clients.map((client, index) => {
           return (
-            <Link
+            <div className='container__client' key={index}>
+              <Link
               key={ index }
-              to={ `${c.id}` }
+              to={ `/client/${client.id}` }
             >
-              <div>
-                <h4>
-                  {c.first_name} {c.last_name}
-                </h4>
-              </div>
+              <ul>
+                <li>
+                  {client.first_name} {client.last_name}
+                </li>
+              </ul>
             </Link>
+            </div>
           );
         })
       );
@@ -67,12 +46,13 @@ const client = () => {
   return (
     <>
       <section>
-      { !Loading
-        ? <span>Loading...</span>
-        : cardItem() }
+        <section className='client'>
+          <Header title="Clientes da cidade" />
+          {cardItem()}
+        </section>
       </section>
     </>
   );
 };
 
-export default client;
+export default Client;

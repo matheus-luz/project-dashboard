@@ -1,0 +1,24 @@
+.header {
+  padding: 10px;
+  background-color: #134e4a;
+  display: flex;
+}
+
+.title__header {
+  color: white;
+  margin: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.link__update {
+  color: white;
+  margin: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: end;
+  width: 50%;
+  margin-left: 400px;
+}

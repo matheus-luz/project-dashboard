@@ -8,14 +8,18 @@ export default class CityController {
     this.service = new CityService();
   }
 
-  // Cidades
   public getAll = async (_req: Request, res: Response) => {
     const { status, data } = await this.service.getAll();
 
     return res.status(status).json(data);
   };
 
-  // Consultar um único cliente por ID
+  public count = async (_req: Request, res: Response) => 
+  // const { status, data } = await this.service.count();
+
+    res.status(200).json('sucess')
+  ;
+
   public findId = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { status, data } = await this.service.findId(id);
@@ -23,10 +27,10 @@ export default class CityController {
     return res.status(status).json(data);
   };
 
-  // Listar clientes por cidade
   public findCityToClient = async (req: Request, res: Response) => {
-    const { name } = req.body;
-    const { status, data } = await this.service.findCityToClient(name);
+    const { id } = req.params;
+    const { status, data } = await this.service.findCityToClient(id);
+  
     return res.status(status).json(data);
   };
 }

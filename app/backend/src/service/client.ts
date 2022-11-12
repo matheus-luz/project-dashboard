@@ -44,33 +44,18 @@ export default class ClientService {
     };
   };
 
-  public findCityToClient = async (name: string) => {
-    const cityFindId = await City.findOne({ where: { name } });
-    const data = await Client.findAll(connectionTable);
+  public updateId = async (body: TClientUpdate) => {
+    const { email, gender, companyId, titleId } = body;
 
-    if (!cityFindId) {
-      return {
-        status: 404,
-        data: 'Invalid city',
-      };
-    }
-    const response = data.filter((r) => r.city_id === cityFindId.id);
+    const company = await Company.findOne({ where: { name: companyId } });
+    // const city = await City.findOne({ where: { name: cityId } });
+    const title = await Office.findOne({ where: { name: titleId } });
 
-    return {
-      status: 200,
-      data: response,
-    };
-  };
-
-  public updateId = async (body: TClientUpdate, id: string) => {
-    const { email, gender, companyId, cityId, titleId } = body;
     await Client.update({
-      email,
       gender, 
-      company_id: companyId, 
-      city_id: cityId, 
-      title_id: titleId,
-    }, { where: { id } });
+      company_id: company?.id, 
+      title_id: title?.id,
+    }, { where: { email } });
 
     return {
       status: 200,

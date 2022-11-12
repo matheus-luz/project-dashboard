@@ -11,10 +11,6 @@ const connectionTable = {
         attributes: { exclude: ['id'] },
       },
       {
-        model: City,
-        as: 'city',
-      },
-      {
         model: Office,
         as: 'office',
         attributes: { exclude: ['id'] },
@@ -24,9 +20,11 @@ const connectionTable = {
 
 export default class CityService {
   public getAll = async () => {
-    const data = await City.findAll();
+    const citites = await City.findAll();
 
-    return { status: 200, data };
+    // const data = citites.map((city) => city);
+
+    return { status: 200, data: citites };
   };
 
   public findId = async (id: string) => {
@@ -38,9 +36,9 @@ export default class CityService {
     };
   };
 
-  public findCityToClient = async (name: string) => {
-    const cityFindId = await City.findOne({ where: { name } });
-    const data = await Client.findAll(connectionTable);
+  public findCityToClient = async (id: string) => {
+    const cityFindId = await City.findOne({ where: { id } });
+    const clients = await Client.findAll();
 
     if (!cityFindId) {
       return {
@@ -48,11 +46,11 @@ export default class CityService {
         data: 'Invalid city',
       };
     }
-    const response = data.filter((r) => r.city_id === cityFindId.id);
+    const data = clients.filter((client) => client.city_id === cityFindId.id);
 
     return {
       status: 200,
-      data: response,
+      data,
     };
   };
 }

@@ -73,27 +73,75 @@ Os exemplos a seguir utilizam o [Isomnia](https://insomnia.rest/) para fazer as 
 
 </details>
 
-## 2 - GET (`/login/validate`)
-#### [GET `/login/validate`]
-
-Com Authorization já cadastrado
+## 2 - GET (`/city`)
+#### [GET `/city`]
 
 <details>
 
-     {
-	    "email": "luz.matheus11@gmail.com",
-	    "password": "12345"
-    }
-
 + Response 200 OK (application/json)
 
+  [
     {
-      "id": 1
-    }
+      "id": 1,
+      "name": "Warner, NH"
+    },
+    {
+      "id": 2,
+      "name": "East Natchitoches, PA"
+    },
+    {
+      "id": 3,
+      "name": "Lyon, WV"
+    },
+    {
+      "id": 4,
+      "name": "Willow Run, IL"
+    },
+    {
+      "id": 5,
+      "name": "Conyersville, AZ"
+    },
+    {
+      "id": 6,
+      "name": "Mount Baker, NY"
+    },
+  ]
 
 </details>
 
-## 3 - GET (`/client`)
+## 3 - GET (`/city/id`)
+#### [GET `/city/1`]
+
+<details>
+
+  + Response 200 OK (application/json)
+
+    [
+      {
+        "id": 1,
+        "first_name": "Laura",
+        "last_name": "Richards",
+        "email": "lrichards0@reverbnation.com",
+        "gender": "Female",
+        "company_id": 1,
+        "city_id": 1,
+        "title_id": 1,
+        "company": {
+          "name": "Meezzy"
+        },
+        "city": {
+          "id": 1,
+          "name": "Warner, NH"
+        },
+        "office": {
+          "name": "Biostatistician III"
+        }
+      }
+  ]
+
+</details>
+
+## 4 - GET (`/client`)
 #### [GET `/client`]
 
 <details>
@@ -182,7 +230,7 @@ Com Authorization já cadastrado
 
 </details>
 
-## 4 - GET (`/client/:id`)
+## 5 - GET (`/client/:id`)
 #### [GET `/client/:id`]
 
 
@@ -212,8 +260,8 @@ Com Authorization já cadastrado
 
 </details>
 
-## 5 - PATCH (`/client/:id`)
-#### [PATCH `/client/:id`]
+## 6 - PATCH (`/client/`)
+#### [PATCH `/client/`]
 
 
 <details>
@@ -222,7 +270,7 @@ Com Authorization já cadastrado
 + Body
 
     {
-      "email": "poa@dmdm.com.cn",
+      "email": "lrichards0@reverbnation.com",
       "gender": "Masculino",
       "companyId": 2,
       "cityId": 2,
@@ -235,63 +283,12 @@ Com Authorization já cadastrado
 
 </details>
 
-## 6 - GET (`/client/city`)
-#### [GET `/client/city`]
+## 7 - GET (`/city/count`) - **EM ANDAMENTO**
+#### [GET `/city/count`]
 
 
 <details>
-  + Request (application/json)
-  + Body
 
-    {
-      "name": "East Natchitoches, PA"
-    }
-
-
-+ Response 200 OK (application/json)
-
-    [
-      {
-        "id": 2,
-        "first_name": "Margaret",
-        "last_name": "Mendoza",
-        "email": "poa@dmdm.com.cn",
-        "gender": "Masculino",
-        "company_id": 2,
-        "city_id": 2,
-        "title_id": 3,
-        "company": {
-          "name": "Skipfire"
-        },
-        "city": {
-          "id": 2,
-          "name": "East Natchitoches, PA"
-        },
-        "office": {
-          "name": "Senior Sales Associate"
-        }
-      },
-      {
-        "id": 3,
-        "first_name": "Craig",
-        "last_name": "Mccoy",
-        "email": "poa@dmdm.com.cn",
-        "gender": "Masculino",
-        "company_id": 2,
-        "city_id": 2,
-        "title_id": 3,
-        "company": {
-          "name": "Skipfire"
-        },
-        "city": {
-          "id": 2,
-          "name": "East Natchitoches, PA"
-        },
-        "office": {
-          "name": "Senior Sales Associate"
-        }
-      }
-    ]
 
 </details>
 

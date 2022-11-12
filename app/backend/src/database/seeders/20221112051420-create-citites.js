@@ -39,13 +39,13 @@ module.exports = {
           "name": "Spring City, MS",
         },
         {
-          "name": "Mittenlane, TX"
+          "name": "Mittenlane, TX",
         },
         {
-          "name": "East Waterford, ME"
+          "name": "East Waterford, ME",
         },
         {
-          "name": "Coltman, WV"
+          "name": "Coltman, WV",
         }
       ],
       {},
