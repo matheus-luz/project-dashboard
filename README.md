@@ -1,7 +1,5 @@
 # Bem vindo ao repositório Dashboard Native!
 
-Projeto desenvolvido para o desafio técnico da empresa [Native IP](https://nativeip.com.br/)
-
 
 Criação de uma API REST em NodeJS, para consumir informações de clientes e um dashboard para visualizar essas informações em React.js.
 
