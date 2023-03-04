@@ -14,11 +14,11 @@ export default class CityController {
     return res.status(status).json(data);
   };
 
-  public count = async (_req: Request, res: Response) => {
-    const { status, data } = await this.service.count();
+  public count = async (_req: Request, res: Response) => 
+  // const { status, data } = await this.service.count();
 
-    return res.status(status).json(data);
-  };
+    res.status(200).json('sucess')
+  ;
 
   public findId = async (req: Request, res: Response) => {
     const { id } = req.params;

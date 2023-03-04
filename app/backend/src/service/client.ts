@@ -23,6 +23,11 @@ const connectionTable = {
       ],
 };
 export default class ClientService {
+  public count = async () => 
+    // const count = await sequelize.query('SELECT * FROM cities');
+    ({ status: 200, data: 'implement' })
+  ;
+  
   public getAll = async () => {
     const data = await Client.findAll(connectionTable);
 
@@ -48,7 +53,7 @@ export default class ClientService {
     await Client.update({
       gender, 
       company_id: company?.id, 
-      city_id: city?.id, 
+      city_id: city?.id,
       title_id: title?.id,
     }, { where: { email } });
 

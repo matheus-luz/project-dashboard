@@ -1,11 +1,7 @@
+import Company from '../database/models/Company';
 import City from '../database/models/City';
 import Client from '../database/models/Client';
-import Company from '../database/models/Company';
 import Office from '../database/models/Office';
-
-// import Count from '../utils/functions/count';
-
-// const count = new Count();
 
 const connectionTable = {
   include:
@@ -13,10 +9,6 @@ const connectionTable = {
         model: Company,
         as: 'company',
         attributes: { exclude: ['id'] },
-      },
-      {
-        model: City,
-        as: 'city',
       },
       {
         model: Office,
@@ -28,21 +20,15 @@ const connectionTable = {
 
 export default class CityService {
   public getAll = async () => {
-    const data = await City.findAll();
+    const citites = await City.findAll();
 
-    return { status: 200, data };
-  };
+    // const data = citites.map((city) => city);
 
-  public count = async () => { 
-    const clients = await Client.findAll();
-    // const cities = await City.findAll();
-    // const data = count.countClients(clients, cities);
-
-    return { status: 200, data: clients };
+    return { status: 200, data: citites };
   };
 
   public findId = async (id: string) => {
-    const data = await City.findByPk(id, connectionTable);
+    const data = await Client.findByPk(id, connectionTable);
 
     return {
       status: 200,
@@ -52,7 +38,7 @@ export default class CityService {
 
   public findCityToClient = async (id: string) => {
     const cityFindId = await City.findOne({ where: { id } });
-    const clients = await Client.findAll(connectionTable);
+    const clients = await Client.findAll();
 
     if (!cityFindId) {
       return {
@@ -60,8 +46,7 @@ export default class CityService {
         data: 'Invalid city',
       };
     }
-    const data = clients
-      .filter((response) => response.city_id === cityFindId.id);
+    const data = clients.filter((client) => client.city_id === cityFindId.id);
 
     return {
       status: 200,
